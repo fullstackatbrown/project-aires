@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Before making edits
+Always make sure your local branch is up to date before starting work.
 
-## Getting Started
+git pull
 
-First, run the development server:
+This pulls the latest changes from the main branch so you don’t accidentally work on outdated code or cause merge conflicts later.
 
-```bash
+
+## Running the server
+First, install dependencies (only needed the first time or after dependency changes):
+
+npm install
+
+Then, run the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying anything in `app/page.tsx`.
+The page will auto-update as you save changes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## How to make a pull request
+A pull request (PR) is how you propose your changes to be reviewed and merged into the main branch. It allows teammates to review your code, leave comments, and ensure everything works before it goes live.
 
+Steps:
+1. Create a new branch for your work:
+   git checkout -b your-branch-name
+
+2. Make your changes and commit them:
+   git add -A
+   git commit -m "Brief description of your changes"
+
+3. Push your branch to GitHub:
+   git push origin your-branch-name
+
+4. Go to the repository on GitHub and click “Compare & pull request”.
+
+5. In the pull request description:
+   - Clearly explain what you changed and why
+   - Add screenshots or videos if the change affects the UI
+   - Link any relevant issues or follow-on tasks
+
+6. Submit the pull request and wait for review.  
+   If changes are requested, push additional commits to the same branch.
+
+
+## Best practices
+- Adhere to the existing design system (spacing, colors, typography, layout)
+- Reuse existing components instead of duplicating logic or UI
+- Comment your code so others understand what each component is responsible for
+- If you are vibe coding:
+  - Make sure you understand what was generated
+  - Ensure it fits the existing codebase and design scheme
+  - Remove unused or unnecessary code
+- Use clear, descriptive commit messages
+
+
+## Learn More about Next.js
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
