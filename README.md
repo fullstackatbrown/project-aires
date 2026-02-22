@@ -26,14 +26,14 @@ A pull request (PR) is how you propose your changes to be reviewed and merged in
 
 Steps:
 1. Create a new branch for your work:
-   git checkout -b your-branch-name
+   - git checkout -b your-branch-name
 
 2. Make your changes and commit them:
-   git add -A
-   git commit -m "Brief description of your changes"
+   - git add -A
+   - git commit -m "Brief description of your changes"
 
 3. Push your branch to GitHub:
-   git push origin your-branch-name
+   - git push origin your-branch-name
 
 4. Go to the repository on GitHub and click “Compare & pull request”.
 
