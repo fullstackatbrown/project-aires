@@ -1,24 +1,32 @@
+## Cloning the repo
+
+Run 
+- git clone git@github.com:fullstackatbrown/project-aires.git in terminal (probably your desktop or documents folder)
+
+If that doesn’t work, run
+- git clone ​​https://github.com/fullstackatbrown/project-aires.git
+
+If you’re getting errors red error lines immediately, you probably have uninstalled dependencies! run:
+- npm install next react react-dom
+
 ## Before making edits
 Always make sure your local branch is up to date before starting work.
-
-git pull
+- git pull
 
 This pulls the latest changes from the main branch so you don’t accidentally work on outdated code or cause merge conflicts later.
 
 
 ## Running the server
 First, install dependencies (only needed the first time or after dependency changes):
-
-npm install
+- npm install
 
 Then, run the development server:
-
-npm run dev
+- npm run dev
 
 Open http://localhost:3000 in your browser to view the website.
 
-You can start editing the page by modifying anything in `app/page.tsx`.
-The page will auto-update as you save changes.
+You can start editing the page by modifying anything in `app/`.
+The page will auto-update as you save changes locally.
 
 
 ## How to make a pull request
