@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat, Nunito, Raleway } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -34,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${nunito.variable} ${raleway.variable} antialiased`}>
+        <Navbar />
         {children} {/* this is where each page's content gets inserted (like your home page, blog page, events page, etc.) */}
         <Footer />
       </body>
