@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 export const postsQuery = defineQuery(
-  `*[_type == "post" && featured != true] | order(publishedAt desc) {
+  `*[_type == "post"] | order(publishedAt desc) {
     _id,
     title,
     slug,
