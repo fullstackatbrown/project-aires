@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "images.squarespace-cdn.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        pathname: "/**",
+      },
     ],
   },
 };
