@@ -33,7 +33,7 @@ export default async function BlogPage() {
   ]);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="flex min-h-screen flex-col bg-white">
       <section className="mx-auto max-w-6xl px-4 pt-10 pb-8 text-center">
         <h1 className="text-4xl font-semibold text-[#1CB2DF] md:text-5xl">
           Blog
@@ -152,8 +152,7 @@ export default async function BlogPage() {
           </div>
         </aside>
       </div>
-
-      <div className="h-1 w-full bg-[#1CB2DF]" />
+      <div className="mt-auto h-1 w-full bg-[#1CB2DF]" />
     </main>
   );
 }
