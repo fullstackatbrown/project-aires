@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
-import { postsQuery, featuredPostsQuery } from "@/sanity/lib/queries";
+import { client } from "@/sanity-cms/lib/client";
+import { urlFor } from "@/sanity-cms/lib/image";
+import { postsQuery, featuredPostsQuery } from "@/sanity-cms/lib/queries";
 
 /**
  * Interface for the Sanity post type.
