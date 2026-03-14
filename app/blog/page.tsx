@@ -14,7 +14,7 @@ interface SanityPost {
   author?: string;
   publishedAt?: string;
   mainImage?: SanityImageSource & { alt?: string };
-  description?: string;
+  abstract?: string;
 }
 
 /**
@@ -73,9 +73,9 @@ export default async function BlogPage() {
                   <h2 className="mt-1 text-xl font-bold text-neutral-800">
                     {post.title}
                   </h2>
-                  {post.description && (
-                    <p className="mt-2 line-clamp-3 text-sm text-neutral-500">
-                      {post.description}
+                  {post.abstract && (
+                    <p className="mt-2 text-sm text-neutral-500">
+                      {post.abstract}
                     </p>
                   )}
                   <a
@@ -136,7 +136,7 @@ export default async function BlogPage() {
                           )
                         : ""}
                     </p>
-                    <h3 className="mt-0.5 text-sm font-bold text-black line-clamp-2">
+                    <h3 className="mt-0.5 text-sm font-bold text-black">
                       {post.title}
                     </h3>
                     <a
