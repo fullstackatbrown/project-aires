@@ -33,16 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<<<<<<< HEAD
       <body className={`${montserrat.variable} ${nunito.variable} ${raleway.variable} antialiased`}>
         {children} {/* this is where each page's content gets inserted (like your home page, blog page, events page, etc.) */}
-=======
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
         <Footer />
->>>>>>> footer
       </body>
     </html>
   );
