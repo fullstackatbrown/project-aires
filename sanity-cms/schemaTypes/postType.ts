@@ -51,10 +51,10 @@ export const postType = defineType({
       type: "blockContent",
     }),
     defineField({
-      name: "description",
-      title: "Description",
+      name: "abstract",
+      title: "Abstract",
       type: "text",
-      description: "Short excerpt of the post shown on the blog page",
+      description: "Abstract of the post shown on the blog page",
     }),
     defineField({
       name: "featured",

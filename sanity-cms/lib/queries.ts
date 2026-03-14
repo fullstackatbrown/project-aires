@@ -8,7 +8,7 @@ export const postsQuery = defineQuery(
     "author": author->name,
     publishedAt,
     mainImage,
-    description
+    abstract
   }`,
 );
 
