@@ -18,7 +18,7 @@ const raleway = Raleway({
   subsets: ["latin"],
 });
 
-// Next.js converts this into <title> and <meta> tags in the <head> section, 
+// Next.js converts this into <title> and <meta> tags in the <head> section,
 // which you don't see on the page but search engines and browser tabs do
 export const metadata: Metadata = {
   title: "Create Next App",

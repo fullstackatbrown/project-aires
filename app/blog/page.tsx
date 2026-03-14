@@ -1,8 +1,14 @@
 import Image from "next/image";
 
+/**
+ * Introduction to the blog section.
+ */
 const BLOG_INTRO =
   "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.";
 
+/**
+ * Posts in the blog section.
+ */
 const POSTS = [
   {
     id: "1",
@@ -46,6 +52,9 @@ const POSTS = [
   },
 ];
 
+/**
+ * Featured posts (sidebar) in the blog section.
+ */
 const FEATURED_POSTS = [
   {
     id: "f1",
@@ -73,14 +82,26 @@ const FEATURED_POSTS = [
   },
 ];
 
-const PAGES = [1, 2, 3, 4];
+/**
+ * Pages in the blog section.
+ */
+const TOTAL_PAGES = 8;
+
+/**
+ * Current page in the blog section.
+ */
 const CURRENT_PAGE = 1;
 
+/**
+ * Blog page component.
+ */
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-white">
       <section className="mx-auto max-w-6xl px-4 pt-10 pb-8 text-center">
-        <h1 className="text-4xl font-bold text-[#5B9BD5] md:text-5xl">Blog</h1>
+        <h1 className="text-4xl font-semibold text-[#1CB2DF] md:text-5xl">
+          Blog
+        </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-500">
           {BLOG_INTRO}
         </p>
@@ -112,7 +133,7 @@ export default function BlogPage() {
                   </p>
                   <a
                     href="#"
-                    className="mt-3 inline-flex items-center text-sm font-medium text-[#5B9BD5] hover:underline"
+                    className="mt-3 inline-flex items-center text-sm font-medium text-[#1CB2DF] hover:underline"
                   >
                     Read more →
                   </a>
@@ -125,43 +146,48 @@ export default function BlogPage() {
             className="mt-10 flex items-center gap-1"
             aria-label="Blog pagination"
           >
-            <button
-              type="button"
-              className="flex h-9 w-9 items-center justify-center rounded text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600"
-              aria-label="Previous page"
-            >
-              ←
-            </button>
-            {PAGES.map((page) => (
+            {[1, 2, 3].map((page) => (
               <button
                 key={page}
                 type="button"
-                className={`flex h-9 min-w-9 items-center justify-center rounded px-2 text-sm ${
+                className={`flex h-9 min-w-9 items-center justify-center rounded border px-2 text-sm ${
                   page === CURRENT_PAGE
-                    ? "bg-[#5B9BD5] text-white"
-                    : "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-700"
+                    ? "border-[#1CB2DF] bg-[#1CB2DF] text-black"
+                    : "border-neutral-300 text-neutral-800 hover:bg-neutral-100"
                 }`}
               >
                 {page}
               </button>
             ))}
+            <span className="flex h-9 min-w-9 items-center justify-center text-sm text-neutral-800">
+              ...
+            </span>
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded text-neutral-500 hover:bg-neutral-100 hover:text-neutral-700"
+              className="flex h-9 min-w-9 items-center justify-center rounded border border-neutral-300 px-2 text-sm text-neutral-800 hover:bg-neutral-100"
+            >
+              {TOTAL_PAGES}
+            </button>
+            <button
+              type="button"
+              className="flex h-9 w-9 items-center justify-center rounded border border-neutral-300 text-neutral-800 hover:bg-neutral-100"
               aria-label="Next page"
             >
-              →
+              &gt;
             </button>
           </nav>
         </div>
 
         <aside className="w-full shrink-0 md:order-2 md:w-80">
-          <div className="rounded-xl border-2 border-black bg-white p-6 shadow-md">
+          <div className="border border-neutral-200 bg-white p-6">
             <div className="flex items-center gap-3">
-              <h2 className="text-xl font-bold text-[#5B9BD5] shrink-0">
+              <h2 className="text-xl font-semibold text-[#1CB2DF] shrink-0">
                 Featured
               </h2>
-              <span className="h-px flex-1 bg-neutral-200" aria-hidden />
+              <span
+                className="flex-1 border-t border-[#1CB2DF] opacity-50"
+                aria-hidden
+              />
             </div>
             <ul className="mt-6 space-y-6">
               {FEATURED_POSTS.map((post) => (
@@ -184,7 +210,7 @@ export default function BlogPage() {
                     </h3>
                     <a
                       href="#"
-                      className="mt-2 inline-block text-sm font-medium text-[#5B9BD5] hover:underline"
+                      className="mt-2 inline-block text-sm font-medium text-[#1CB2DF] hover:underline"
                     >
                       Read more →
                     </a>
@@ -196,7 +222,7 @@ export default function BlogPage() {
         </aside>
       </div>
 
-      <div className="h-1 w-full bg-[#5B9BD5]" />
+      <div className="h-1 w-full bg-[#1CB2DF]" />
     </main>
   );
 }
