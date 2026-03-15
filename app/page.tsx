@@ -3,6 +3,7 @@ import Navbar from "./components/navbar";
 import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
+import ProjectComp from "./components/ProjectComp";
 
 export default function Home() {
   return (
@@ -58,6 +59,20 @@ export default function Home() {
             href="/projects"
             filled={2}
             className="h-fill w-fill px-6 py-1 text-base"
+          />
+        </div>
+        <div className="flex flex-row lg:flex-row items-start px-[113.14px] py-[26.63px] gap-[40px] mt-10">
+          <ProjectComp
+            title="AI Safety Workshop"
+            description="Hands-on sessions exploring practical AI safety and ethics techniques."
+          />
+          <ProjectComp
+            title="Robotics for Social Good"
+            description="Student-led robotics projects focused on community impact and accessibility."
+          />
+          <ProjectComp
+            title="Policy & Governance Research"
+            description="Research on governance frameworks for responsible AI deployment."
           />
         </div>
 
