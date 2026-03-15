@@ -42,7 +42,7 @@ export default function Home() {
       <div className="pb-[100px]">
           <div className="max-w-full mx-auto bg-[#08B2E3] text-white font-medium p-10 px-[70px]  mt-10 flex flex-col md:flex-row items-center gap-[125px]">
             <div className="md:flex-1">
-              <h3 className="text-center font-[24px] px-[113px] mb-0">
+              <h3 className="text-center text-[24px] px-[113px] mb-0">
                 The AI Robotics Ethics Society was founded in 2018 at UCLA by Aaron Hui as a 501(c)(3) nonprofit organization to promote awareness of and the importance of ethical implementation and regulation of AI.
               </h3>
               <div className="flex justify-center mt-6">
