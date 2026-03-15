@@ -2,6 +2,7 @@ import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp";
 import ProjectComp from "./components/ProjectComp";
+import EventsComp from "./components/EventsComp";
 import Image from "next/image";
 
 export default function Home() {
@@ -156,6 +157,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* UPCOMING EVENTS */}
+      <EventsComp />
+
+      {/* give room for intersecting button */}
+      <div className="h-8" />
     </main>
   );
 }
