@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <main className = "bg-white h-auto w-full ">
         <header className="text-black">
-          <div className="container mx-auto px-4 md:px-10 lg:px-[185px] py-[100px]">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-[70px]">
+          <div className="container mx-auto px-4 md:px-10 lg:px-46.25 py-25">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-17.5">
               <div className="md:w-1/2 py-[71.02px]">
                 <h1 className="text-[68px] font-medium mt-10 text-[#08B2E3] leading-none">Welcome to AIRES @ Brown</h1>
                 <h3 className="font-normal mt-5 text-gray-700">
@@ -36,10 +36,10 @@ export default function Home() {
             </div>
           </div>
         </header>
-      <div className="pb-[100px]">
-          <div className="max-w-full mx-auto bg-[#08B2E3] text-white font-medium p-10 px-[70px]  mt-10 flex flex-col md:flex-row items-center gap-[125px]">
+      <div className="pb-25">
+          <div className="max-w-full mx-auto bg-[#08B2E3] text-white font-medium p-10 px-17.5  mt-10 flex flex-col md:flex-row items-center gap-31.25">
             <div className="md:flex-1">
-              <h3 className="text-center text-[24px] px-[113px] mb-0">
+              <h3 className="text-center text-[24px] px-28.25 mb-0">
                 The AI Robotics Ethics Society was founded in 2018 at UCLA by Aaron Hui as a 501(c)(3) nonprofit organization to promote awareness of and the importance of ethical implementation and regulation of AI.
               </h3>
               <div className="flex justify-center mt-6">
@@ -56,7 +56,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex items-center px-[70px] gap-[16px]">
+        <div className="flex items-center px-17.5 gap-4">
           <span className="text-[40px] font-semibold text-[#08B2E3]">Projects</span>
           <hr className="border-black flex-1" />
           <Button
@@ -66,7 +66,7 @@ export default function Home() {
             className="h-fill w-fill px-6 py-1 text-base"
           />
         </div>
-        <div className="flex flex-row lg:flex-row items-start px-[113.14px] py-[26.63px] gap-[40px] mt-10">
+        <div className="flex flex-row lg:flex-row items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
           <ProjectComp
             title="AI Safety Workshop"
             description="Hands-on sessions exploring practical AI safety and ethics techniques."
@@ -89,13 +89,13 @@ export default function Home() {
             View Events
           </a>
         </div>
-        <div className="py-[100px]">
-          <div className= "max-w-full h-fit bg-[#C4CFD9] py-[80px] px-[70px]">
-              <div className="flex flex-col md:flex-row items-center gap-[80px] px-[150px] mt-10">
+        <div className="py-25">
+          <div className= "max-w-full h-fit bg-[#C4CFD9] py-20 px-17.5">
+              <div className="flex flex-col md:flex-row items-center gap-20 px-37.5 mt-10">
                 <div className="flex justify-center rounded-lg border-4 border-white">
                   <img src="/team-picture.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
                 </div>
-                <div className="md:w-1/2 gap-[25px] text-black">
+                <div className="md:w-1/2 gap-6.25 text-black">
                   <h2 className="text-3xl font-semibold mb-4">Leaders driven by a Mission</h2>
                   <p className="mb-4 text-sm text-black">
                     Members of the AIRES team are dedicated to educating the next generation of AI leaders, ensuring that AI is created responsibly. Get to know our team and their backgrounds.
@@ -108,9 +108,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="px-[157.5px] pb-[100px]">
-          <div className="flex items-center pb-[60px] gap-[16px]">
-            <div className="flex items-center w-full gap-[16px]">
+        <div className="px-[157.5px] pb-25">
+          <div className="flex items-center pb-15 gap-4">
+            <div className="flex items-center w-full gap-4">
               <span className="text-[40px] font-semibold text-[#08B2E3]">Blog</span>
               <hr className="border-black flex-1" />
               <Button
@@ -128,7 +128,7 @@ export default function Home() {
               description="A quick look at how ethical design principles guide safe, fair, and transparent robotics systems in education and industry."
             />
 
-            <div className="w-full lg:w-[420px] flex flex-col">
+            <div className="w-full lg:w-105 flex flex-col">
               <BlogComp
                 title="AI Policy Updates You Should Know"
                 author="AIRES Team"

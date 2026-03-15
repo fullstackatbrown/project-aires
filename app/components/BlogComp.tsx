@@ -16,14 +16,14 @@ export default function BlogComp({
   imageAlt = "Blog thumbnail",
 }: BlogCompProps) {
   return (
-    <div className="flex items-center gap-4 p-4 mb-4 w-[572px] min-h-[163px]">
+    <div className="flex items-center gap-4 p-4 mb-4 w-143 min-h-41">
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-[163px] h-[163px] object-cover rounded-2xl shrink-0"
+        className="w-41 h-41 object-cover rounded-2xl shrink-0"
       />
 
-      <div className="flex flex-col justify-center h-[163px] gap-1">
+      <div className="flex flex-col justify-center h-41 gap-1">
         <p className="text-sm text-gray-600">
           {author} | {date}
         </p>

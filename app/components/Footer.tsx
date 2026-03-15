@@ -1,6 +1,6 @@
 "use client"; 
 import Image from "next/image"; 
-import Social from "@/components/Social"; 
+import Social from "./Social"; 
 
 
 export default function Footer() {
