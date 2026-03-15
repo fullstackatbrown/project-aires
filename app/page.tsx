@@ -87,6 +87,7 @@ export default function Home() {
             href="/events"
             className="bg-white text-[#08B2E3] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition duration-300"
           >
+            View Events
           </a>
         </div>
         <div className="py-[100px]">
