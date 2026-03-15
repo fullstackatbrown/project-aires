@@ -6,6 +6,8 @@ import { postsQuery, featuredPostsQuery } from "@/sanity-cms/lib/queries";
 
 /**
  * Interface for the Sanity post type.
+ * This partially matches the `post` document schema defined in `sanity-cms/schemaTypes/postType.ts`
+ * but only includes the fields we need for rendering the blog page.
  */
 interface SanityPost {
   _id: string;
@@ -19,14 +21,19 @@ interface SanityPost {
 
 /**
  * Introduction to the blog page.
+ * This is hardcoded here for simplicity, which should be sufficient for now.
  */
 const BLOG_INTRO =
   "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.";
 
 /**
  * Blog page component.
+ * This is a server component that fetches the list of posts and featured posts
+ * from Sanity using the defined GROQ queries (`postsQuery` and `featuredPostsQuery`)
+ * and renders them in the designed layout.
  */
 export default async function BlogPage() {
+  // Fetch posts and featured posts in parallel using the Sanity client and the defined queries.
   const [posts, featuredPosts] = await Promise.all([
     client.fetch<SanityPost[]>(postsQuery),
     client.fetch<SanityPost[]>(featuredPostsQuery),
@@ -34,6 +41,7 @@ export default async function BlogPage() {
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
+      {/* Blog header. */}
       <section className="mx-auto max-w-6xl px-4 pt-10 pb-8 text-center">
         <h1 className="text-4xl font-semibold text-[#1CB2DF] md:text-5xl">
           Blog
@@ -43,9 +51,11 @@ export default async function BlogPage() {
         </p>
       </section>
 
+      {/* Blog content(s). */}
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 md:flex-row md:gap-12">
         <div className="min-w-0 flex-1 md:order-1">
           <ul className="space-y-10">
+            {/* List of "normal" posts. */}
             {posts.map((post) => (
               <li key={post._id} className="flex flex-col gap-4 sm:flex-row">
                 {post.mainImage && (
@@ -106,6 +116,7 @@ export default async function BlogPage() {
               />
             </div>
             <ul className="mt-6 space-y-6">
+              {/* List of featured posts. */}
               {featuredPosts.map((post) => (
                 <li key={post._id} className="flex gap-4">
                   {post.mainImage && (
