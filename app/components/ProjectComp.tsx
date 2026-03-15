@@ -12,14 +12,14 @@ export default function ProjectComp({
   imageAlt?: string;
 }) {
   return (
-    <div className="flex flex-col p-[20px] mb-4 w-[439.11px] border border-[#08B2E3] rounded-xl">
+    <div className="flex flex-col p-5 mb-4 w-[439.11px] border border-[#08B2E3] rounded-xl">
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-[365px] h-[365px] object-cover rounded-xl border-2 border-white mx-auto"
+        className="w-91.25 h-91.25 object-cover rounded-xl border-2 border-white mx-auto"
       />
 
-      <div className="mt-[22.5px] pl-[20px] flex flex-col gap-3">
+      <div className="mt-[22.5px] pl-5 flex flex-col gap-3">
         <h2 className="text-xl font-medium text-black leading-tight">{title}</h2>
         <p className="text-[13.34px] text-black">{description}</p>
         <ReadMore href="/projects" className="mt-2" />
