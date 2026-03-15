@@ -28,7 +28,7 @@ export default function Home() {
                 <div className="">
                   <Image
                     src="/BrownCarney.png"
-                    alt="Brown Canary"
+                    alt="Brown University Carney Hall"
                     className=""
                     width={670}
                     height={679}
