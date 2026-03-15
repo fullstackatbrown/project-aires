@@ -12,11 +12,11 @@ export default function ProjectComp({
   imageAlt?: string;
 }) {
   return (
-    <div className="flex flex-col p-5 mb-4 w-[439.11px] border border-[#08B2E3] rounded-xl">
+    <div className="flex flex-col p-5 mb-4 w-full min-w-0 max-w-[439.11px] border border-[#08B2E3] rounded-xl">
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-91.25 h-91.25 object-cover rounded-xl border-2 border-white mx-auto"
+        className="w-full aspect-square max-w-[365px] object-cover rounded-xl border-2 border-white mx-auto"
       />
 
       <div className="mt-[22.5px] pl-5 flex flex-col gap-3">
