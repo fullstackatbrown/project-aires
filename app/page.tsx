@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <main className = "bg-white h-auto w-full ">
         <header className="text-black">
-          <div className="container mx-auto px-[185.18px] py-[100px]">
+          <div className="container mx-auto px-4 md:px-10 lg:px-[185px] py-[100px]">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-[70px]">
               <div className="md:w-1/2 py-[71.02px]">
                 <h1 className="text-[68px] font-medium mt-10 text-[#08B2E3] leading-none">Welcome to AIRES @ Brown</h1>
