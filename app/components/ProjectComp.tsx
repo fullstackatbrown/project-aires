@@ -30,7 +30,7 @@ export default function ProjectComp({
   };
 
   return (
-    <div className="flex flex-col py-6 px-3 mb-4 w-full min-w-0 max-w-[439.11px] border border-[#08B2E3] rounded-xl">
+    <div className="flex flex-col py-8 px-3 mb-4 w-full min-w-0 max-w-[439.11px] border border-[#08B2E3] rounded-xl">
       <div className="flex flex-row items-center gap-1 w-full">
         <button
           type="button"
