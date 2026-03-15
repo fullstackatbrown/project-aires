@@ -1,5 +1,4 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+
 import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
@@ -8,7 +7,6 @@ import ProjectComp from "./components/ProjectComp";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <main className = "bg-white h-auto w-full ">
         <header className="text-black">
           <div className="container mx-auto px-[185.18px] py-[100px]">
@@ -148,7 +146,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
