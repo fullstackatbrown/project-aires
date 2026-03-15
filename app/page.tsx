@@ -1,5 +1,3 @@
-import Footer from "./components/footer";
-import Navbar from "./components/navbar";
 import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
@@ -9,7 +7,6 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <main className = "bg-white h-auto w-full ">
         <header className="text-black">
           <div className="container mx-auto px-4 md:px-10 lg:px-[185px] py-[100px]">
@@ -157,7 +154,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
