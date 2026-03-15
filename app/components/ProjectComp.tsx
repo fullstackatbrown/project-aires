@@ -12,7 +12,7 @@ export default function ProjectComp({
   imageAlt?: string;
 }) {
   return (
-    <div className="flex flex-col rounded-sm p-[20px] mb-4 w-[439.11px] border border-[#08B2E3] rounded-xl">
+    <div className="flex flex-col p-[20px] mb-4 w-[439.11px] border border-[#08B2E3] rounded-xl">
       <img
         src={imageSrc}
         alt={imageAlt}
