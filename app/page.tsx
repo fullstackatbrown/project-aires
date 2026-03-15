@@ -4,6 +4,7 @@ import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
 import ProjectComp from "./components/ProjectComp";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -25,12 +26,13 @@ export default function Home() {
 
               <div className="md:w-1/2 flex justify-center md:justify-end">
                 <div className="">
-                  <img
+                  <Image
                     src="/BrownCarney.png"
                     alt="Brown Canary"
                     className=""
                     width={670}
                     height={679}
+                    priority
                   />
                 </div>
               </div>
@@ -47,7 +49,13 @@ export default function Home() {
                 <Button text="National Aires Website" href="https://www.theaires.org/" target="_blank" filled={3} />
               </div>
             </div>
-            <img src="/aires-logo.png" alt="AIRES Large Logo" className="w-48 h-48 md:w-96 md:h-96 object-contain mx-auto rounded-full" />
+            <Image
+              src="/aires-logo.png"
+              alt="AIRES Large Logo"
+              className="w-48 h-48 md:w-96 md:h-96 object-contain mx-auto rounded-full"
+              width={384}
+              height={384}
+            />
           </div>
         </div>
 
