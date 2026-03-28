@@ -126,12 +126,14 @@ export default async function BlogPage({
                       {post.abstract}
                     </p>
                   )}
-                  <a
-                    href={`/blog/${post.slug?.current ?? ""}`}
-                    className="mt-3 inline-flex items-center text-sm font-medium text-[#1CB2DF] hover:underline"
-                  >
-                    Read more &rarr;
-                  </a>
+                  {post.slug?.current ? (
+                    <Link
+                      href={`/blog/${post.slug.current}`}
+                      className="mt-3 inline-flex items-center text-sm font-medium text-[#1CB2DF] hover:underline"
+                    >
+                      Read more &rarr;
+                    </Link>
+                  ) : null}
                 </div>
               </li>
             ))}
@@ -268,12 +270,14 @@ export default async function BlogPage({
                     <h3 className="mt-0.5 text-sm font-bold text-black">
                       {post.title}
                     </h3>
-                    <a
-                      href={`/blog/${post.slug?.current ?? ""}`}
-                      className="mt-2 inline-block text-sm font-medium text-[#1CB2DF] hover:underline"
-                    >
-                      Read more &rarr;
-                    </a>
+                    {post.slug?.current ? (
+                      <Link
+                        href={`/blog/${post.slug.current}`}
+                        className="mt-2 inline-block text-sm font-medium text-[#1CB2DF] hover:underline"
+                      >
+                        Read more &rarr;
+                      </Link>
+                    ) : null}
                   </div>
                 </li>
               ))}
