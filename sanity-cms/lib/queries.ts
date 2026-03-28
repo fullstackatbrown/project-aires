@@ -22,8 +22,30 @@ export const postsQuery = defineQuery(
 );
 
 /**
+ * Fetch the total number of posts( for later use in pagination).
+ */
+export const postsCountQuery = defineQuery(`count(*[_type == "post"])`);
+
+/**
+ * Fetch a slice (subset) of posts for a specific page (from `$start` to `$end` - 1).
+ * The posts are ordered by published date in descending order.
+ */
+export const paginatedPostsQuery = defineQuery(
+  `*[_type == "post"] | order(publishedAt desc)[$start...$end] {
+    _id,
+    title,
+    slug,
+    "author": author->name,
+    publishedAt,
+    mainImage,
+    abstract
+  }`,
+);
+
+/**
  * Fetch featured posts with almost the same fields as the previous query,
  * but only those that are marked as featured and limit to the first 3 results.
+ * The posts are ordered by published date in descending order.
  */
 export const featuredPostsQuery = defineQuery(
   `*[_type == "post" && featured == true] | order(publishedAt desc)[0...3] {
