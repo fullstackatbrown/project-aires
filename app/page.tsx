@@ -96,9 +96,11 @@ export default function Home() {
           <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 py-10 lg:py-16">
             <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16 xl:gap-20 mt-2 lg:mt-6">
               <div className="flex justify-center rounded-lg border-4 border-white w-full md:w-auto">
-                <img
+                <Image
                   src="/team-picture.png"
                   alt="AI Team Picture"
+                  width={1200}
+                  height={800}
                   className="object-cover w-full max-w-2xl h-auto"
                 />
               </div>
