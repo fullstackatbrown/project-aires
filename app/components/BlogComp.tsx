@@ -1,4 +1,5 @@
 import ReadMore from "./ReadMore";
+import Image from "next/image";
 
 type BlogCompProps = {
   title: string;
@@ -17,9 +18,11 @@ export default function BlogComp({
 }: BlogCompProps) {
   return (
     <div className="w-full max-w-[572px] min-h-[163px] flex items-center gap-4 p-4 mb-4">
-      <img
+      <Image
         src={imageSrc}
         alt={imageAlt}
+        width={163}
+        height={163}
         className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] lg:w-[163px] lg:h-[163px] object-cover rounded-2xl shrink-0"
       />
 
