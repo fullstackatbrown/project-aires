@@ -1,4 +1,5 @@
 import ReadMore from "./ReadMore";
+import Image from "next/image";
 
 export default function ProjectComp({
   title,
@@ -13,9 +14,11 @@ export default function ProjectComp({
 }) {
   return (
     <div className="w-full max-w-[439px] flex flex-col p-5 mb-4 border border-[#08B2E3] rounded-xl">
-      <img
+      <Image
         src={imageSrc}
         alt={imageAlt}
+        width={439}
+        height={439}
         className="w-full aspect-square object-cover rounded-xl border-2 border-white mx-auto"
       />
 
