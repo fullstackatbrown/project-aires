@@ -35,8 +35,15 @@ export default function Button({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (onClick) onClick(e);
     if (href && !e.defaultPrevented) {
+      const isRelative = href.startsWith("/");
+
       if (target === "_blank") {
-        window.open(href, "_blank");
+        const newWindow = window.open(href, "_blank", "noopener,noreferrer");
+        if (newWindow) {
+          newWindow.opener = null;
+        }
+      } else if (!isRelative) {
+        window.location.href = href;
       } else {
         router.push(href);
       }
