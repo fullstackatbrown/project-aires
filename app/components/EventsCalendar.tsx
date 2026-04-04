@@ -6,10 +6,10 @@ export default function EventsCalendar() {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold text-cyan-500 mb-4">Event Calendar</h2>
+      <h2 className="text-3xl font-bold text-[#08B2E3]">Event Calendar</h2>
 
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div className="bg-cyan-500 text-white px-6 py-4">
+        <div className="bg-[#08B2E3] text-white px-6 py-4">
           <h3 className="text-lg font-semibold">Upcoming Events</h3>
           <p className="text-sm text-cyan-100 mt-1">Click on any event to see more details</p>
         </div>
@@ -31,7 +31,7 @@ export default function EventsCalendar() {
           href={calendarUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg hover:bg-cyan-600 transition-colors duration-200"
+          className="px-6 py-3 bg-[#08B2E3] text-white font-semibold rounded-lg hover:bg-[#08B2E3] transition-colors duration-200"
         >
           View on Google Calendar
         </a>
