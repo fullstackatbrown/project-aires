@@ -18,19 +18,9 @@ export default function ReadMore({
   const router = useRouter();
 
   const handleClick = () => {
-    // Treat any URL with a scheme (e.g. http:, https:, mailto:, tel:) or
-    // protocol-relative URLs (//example.com) as external.
-    const hasScheme = /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(href);
-    const isProtocolRelative = href.startsWith("//");
-    const isExternal = hasScheme || isProtocolRelative;
-
-    if (target === "_blank") {
-      const newWindow = window.open(href, "_blank", "noopener,noreferrer");
-      if (newWindow) {
-        newWindow.opener = null;
-      }
-    } else if (isExternal) {
-      window.location.href = href;
+    const isExternal = /^https?:\/\//i.test(href);
+    if (target === "_blank" || isExternal) {
+      window.open(href, "_blank");
     } else {
       router.push(href);
     }
