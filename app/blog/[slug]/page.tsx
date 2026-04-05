@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.title}
           </h1>
           {post.abstract ? (
-            <p className="mt-4 text-base text-black italic">{post.abstract}</p>
+            <p className="mt-4 text-base text-neutral-500">{post.abstract}</p>
           ) : null}
         </header>
 
@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
 
         {!post.body?.length && !post.abstract ? (
-          <p className="mt-6 text-sm text-black italic">
+          <p className="mt-6 text-sm text-neutral-500">
             This post does not have any content yet.
           </p>
         ) : null}

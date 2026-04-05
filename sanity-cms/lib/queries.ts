@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 /**
- * Fetch all posts with their title, slug, author name, published date, main image, and abstract.
+ * Fetch all posts with their `_id`, title, slug, read-more URL, author name, published date, main image, and abstract.
  * The posts are ordered by published date in descending order.
  * `author->name` is a GROQ syntax to fetch the name of the author from the referenced author document,
  * where a document in Sanity:
@@ -14,6 +14,7 @@ export const postsQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     mainImage,
@@ -35,6 +36,7 @@ export const paginatedPostsQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     mainImage,
@@ -52,6 +54,7 @@ export const featuredPostsQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     mainImage
@@ -70,6 +73,7 @@ export const postBySlugQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     abstract,
