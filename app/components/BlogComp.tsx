@@ -34,5 +34,5 @@ export default function BlogComp({
         <ReadMore href="/blog" className="mt-1" />
       </div>
     </div>
-  );
+  </div>);
 }

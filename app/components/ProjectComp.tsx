@@ -28,5 +28,5 @@ export default function ProjectComp({
         <ReadMore href="/projects" className="mt-2" />
       </div>
     </div>
-  );
+  </div>);
 }
