@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../../public/aires-logo.png";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
-import "./about.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
