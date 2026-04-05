@@ -3,6 +3,7 @@ import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp";
 import ProjectComp from "./components/ProjectComp";
 import EventsComp from "./components/EventsComp";
+import EventsComp from "./components/EventsComp";
 import Image from "next/image";
 
 export default function Home() {
@@ -126,45 +127,40 @@ export default function Home() {
             <hr className="border-black flex-1" />
             <Button text="Read More Here" href="/blog" filled={2} className="px-6 py-1 text-base" />
           </div>
-        </div>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <PrimaryBlog
+              title="How AI Ethics Shapes Real-World Robotics"
+              date="March 14, 2026"
+              description="A quick look at how ethical design principles guide safe, fair, and transparent robotics systems in education and industry."
+            />
 
-        <div className="flex flex-col 2xl:flex-row gap-8 items-center 2xl:items-start">
-          <PrimaryBlog
-            title="How AI Ethics Shapes Real-World Robotics"
-            date="March 14, 2026"
-            description="A quick look at how ethical design principles guide safe, fair, and transparent robotics systems in education and industry."
-          />
-          <div className="w-full 2xl:max-w-md flex flex-col">
-            <BlogComp
-              title="AI Policy Updates You Should Know"
-              author="AIRES Team"
-              date="March 10, 2026"
-              imageSrc="/PBlog.png"
-              imageAlt="AI policy blog thumbnail"
-            />
-            <BlogComp
-              title="Building Trustworthy ML Systems"
-              author="Research Committee"
-              date="March 05, 2026"
-              imageSrc="/PBlog.png"
-              imageAlt="Trustworthy ML blog thumbnail"
-            />
-            <BlogComp
-              title="Ethics in Autonomous Robotics"
-              author="AIRES Editorial"
-              date="February 28, 2026"
-              imageSrc="/PBlog.png"
-              imageAlt="Autonomous robotics blog thumbnail"
-            />
+            <div className="w-full lg:w-105 flex flex-col">
+              <BlogComp
+                title="AI Policy Updates You Should Know"
+                author="AIRES Team"
+                date="March 10, 2026"
+                imageSrc="/PBlog.png"
+                imageAlt="AI policy blog thumbnail"
+              />
+              <BlogComp
+                title="Building Trustworthy ML Systems"
+                author="Research Committee"
+                date="March 05, 2026"
+                imageSrc="/PBlog.png"
+                imageAlt="Trustworthy ML blog thumbnail"
+              />
+              <BlogComp
+                title="Ethics in Autonomous Robotics"
+                author="AIRES Editorial"
+                date="February 28, 2026"
+                imageSrc="/PBlog.png"
+                imageAlt="Autonomous robotics blog thumbnail"
+              />
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* UPCOMING EVENTS */}
-      <EventsComp />
-
-      {/* give room for intersecting button */}
-      <div className="h-8" />
-    </main>
+        <EventsComp/>
+      </main>
+    </>
   );
 }
