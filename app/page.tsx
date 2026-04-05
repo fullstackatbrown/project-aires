@@ -4,8 +4,35 @@ import BlogComp from "./components/BlogComp";
 import ProjectComp from "./components/ProjectComp";
 import EventsComp from "./components/EventsComp";
 import Image from "next/image";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { client } from "@/sanity-cms/lib/client";
+import { urlFor } from "@/sanity-cms/lib/image";
+import { postsQuery } from "@/sanity-cms/lib/queries";
 
-export default function Home() {
+interface HomeBlogPost {
+  _id: string;
+  title: string;
+  author?: string;
+  publishedAt?: string;
+  mainImage?: SanityImageSource & { alt?: string };
+  abstract?: string;
+}
+
+function formatBlogDate(publishedAt?: string) {
+  if (!publishedAt) return "";
+
+  return new Date(publishedAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default async function Home() {
+  const allPosts = await client.fetch<HomeBlogPost[]>(postsQuery);
+  const [latestPost, ...otherPosts] = allPosts;
+  const nextThreePosts = otherPosts.slice(0, 3);
+
   return (
     <main className="bg-white w-full overflow-x-hidden">
       {/* HERO */}
@@ -127,34 +154,53 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
-          <PrimaryBlog
-            title="How AI Ethics Shapes Real-World Robotics"
-            date="March 14, 2026"
-            description="A quick look at how ethical design principles guide safe, fair, and transparent robotics systems in education and industry."
-          />
+          {latestPost ? (
+            <PrimaryBlog
+              title={latestPost.title}
+              author={latestPost.author ?? "Unknown"}
+              date={formatBlogDate(latestPost.publishedAt)}
+              description={latestPost.abstract ?? "Read the latest update from AIRES."}
+              imageSrc={
+                latestPost.mainImage
+                  ? urlFor(latestPost.mainImage).width(1416).height(738).url()
+                  : "/PBlog.png"
+              }
+              imageAlt={latestPost.mainImage?.alt ?? latestPost.title}
+            />
+          ) : (
+            <PrimaryBlog
+              title="No blog posts yet"
+              author=""
+              date=""
+              description="Once posts are published in Sanity, the latest one will appear here automatically."
+            />
+          )}
 
           <div className="w-full lg:w-105 flex flex-col">
-            <BlogComp
-              title="AI Policy Updates You Should Know"
-              author="AIRES Team"
-              date="March 10, 2026"
-              imageSrc="/PBlog.png"
-              imageAlt="AI policy blog thumbnail"
-            />
-            <BlogComp
-              title="Building Trustworthy ML Systems"
-              author="Research Committee"
-              date="March 05, 2026"
-              imageSrc="/PBlog.png"
-              imageAlt="Trustworthy ML blog thumbnail"
-            />
-            <BlogComp
-              title="Ethics in Autonomous Robotics"
-              author="AIRES Editorial"
-              date="February 28, 2026"
-              imageSrc="/PBlog.png"
-              imageAlt="Autonomous robotics blog thumbnail"
-            />
+            {nextThreePosts.length > 0 ? (
+              nextThreePosts.map((post) => (
+                <BlogComp
+                  key={post._id}
+                  title={post.title}
+                  author={post.author ?? "Unknown"}
+                  date={formatBlogDate(post.publishedAt)}
+                  imageSrc={
+                    post.mainImage
+                      ? urlFor(post.mainImage).width(326).height(326).url()
+                      : "/PBlog.png"
+                  }
+                  imageAlt={post.mainImage?.alt ?? `${post.title} thumbnail`}
+                />
+              ))
+            ) : (
+              <BlogComp
+                title="No additional posts yet"
+                author="AIRES"
+                date=""
+                imageSrc="/PBlog.png"
+                imageAlt="No blog posts available"
+              />
+            )}
           </div>
         </div>
 

@@ -1,5 +1,4 @@
 import ReadMore from "./ReadMore";
-import Image from "next/image";
 
 type BlogCompProps = {
   title: string;
