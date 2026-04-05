@@ -20,7 +20,7 @@ const POSTS_PER_PAGE = 5;
 const PAGINATION_BUTTONS_TO_RENDER = 3;
 
 /**
- * Interface for the Sanity post type.
+ * Interface for the Sanity post type on the main blog page.
  * This partially matches the `post` document schema defined in `sanity-cms/schemaTypes/postType.ts`
  * but only includes the fields we need for rendering the blog page.
  */
@@ -122,9 +122,7 @@ export default async function BlogPage({
                     {post.title}
                   </h2>
                   {post.abstract && (
-                    <p className="mt-2 text-sm text-neutral-500">
-                      {post.abstract}
-                    </p>
+                    <p className="mt-2 text-sm text-black">{post.abstract}</p>
                   )}
                   {post.slug?.current ? (
                     <Link

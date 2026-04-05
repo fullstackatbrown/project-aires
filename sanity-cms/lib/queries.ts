@@ -57,3 +57,22 @@ export const featuredPostsQuery = defineQuery(
     mainImage
   }`,
 );
+
+/**
+ * Fetch one post by slug (`slug.current`),
+ * which is used for `./app/blog/[slug]/page.tsx`.
+ * `[slug]` is used for dynamic routing in Next.js in order to create routes for specific blog posts from dynamic data
+ * even if the exact segment names are not known at build time.
+ * Reference: <https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes>.
+ */
+export const postBySlugQuery = defineQuery(
+  `*[_type == "post" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    "author": author->name,
+    publishedAt,
+    abstract,
+    body
+  }`,
+);
