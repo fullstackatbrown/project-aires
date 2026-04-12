@@ -19,6 +19,14 @@ export const postType = defineType({
       },
     }),
     defineField({
+      name: "readMoreUrl",
+      title: "Read More URL",
+      type: "url",
+      description:
+        'Optional external webpage for the "Read more" link. Leave blank to use the blog post body.',
+      validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
+    }),
+    defineField({
       name: "author",
       type: "reference",
       to: { type: "author" },
@@ -49,6 +57,8 @@ export const postType = defineType({
     defineField({
       name: "body",
       type: "blockContent",
+      description:
+        'The main content of the post. Ignored if "Read More URL" is provided.',
     }),
     defineField({
       name: "abstract",
