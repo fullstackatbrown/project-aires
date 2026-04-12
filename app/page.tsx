@@ -12,6 +12,8 @@ import { postsQuery } from "@/sanity-cms/lib/queries";
 interface HomeBlogPost {
   _id: string;
   title: string;
+  slug?: { current: string };
+  readMoreUrl?: string;
   author?: string;
   publishedAt?: string;
   mainImage?: SanityImageSource & { alt?: string };
@@ -148,51 +150,74 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="px-[157.5px] pb-25">
-          <div className="flex items-center pb-15 gap-4">
-            <div className="flex items-center w-full gap-4">
-              <span className="text-[40px] font-semibold text-[#08B2E3]">Blog</span>
-              <hr className="border-black flex-1" />
-              <Button
-                text="Read More Here"
-                href="/blog"
-                filled={2}
-                className="h-fill w-fill px-6 py-1 text-base"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <PrimaryBlog
-              title="How AI Ethics Shapes Real-World Robotics"
-              date="March 14, 2026"
-              description="A quick look at how ethical design principles guide safe, fair, and transparent robotics systems in education and industry."
-            />
+      <section className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pb-14 lg:pb-20">
+       <div className="flex items-center w-full gap-4 pb-8 lg:pb-12">
+         <span className="text-[32px] md:text-[40px] font-semibold text-[#08B2E3] whitespace-nowrap">Blog</span>
+         <hr className="border-black flex-1" />
+         <Button text="Read More Here" href="/blog" filled={2} className="px-6 py-1 text-base" />
+       </div>
 
-            <div className="w-full lg:w-105 flex flex-col">
-              <BlogComp
-                title="AI Policy Updates You Should Know"
-                author="AIRES Team"
-                date="March 10, 2026"
-                imageSrc="/PBlog.png"
-                imageAlt="AI policy blog thumbnail"
-              />
-              <BlogComp
-                title="Building Trustworthy ML Systems"
-                author="Research Committee"
-                date="March 05, 2026"
-                imageSrc="/PBlog.png"
-                imageAlt="Trustworthy ML blog thumbnail"
-              />
-              <BlogComp
-                title="Ethics in Autonomous Robotics"
-                author="AIRES Editorial"
-                date="February 28, 2026"
-                imageSrc="/PBlog.png"
-                imageAlt="Autonomous robotics blog thumbnail"
-              />
-            </div>
-          </div>
-        </div>
+
+       <div className="flex flex-col lg:flex-row gap-8 items-start">
+         {latestPost ? (
+           <PrimaryBlog
+             title={latestPost.title}
+             author={latestPost.author ?? "Unknown"}
+             date={formatBlogDate(latestPost.publishedAt)}
+             description={latestPost.abstract ?? "Read the latest update from AIRES."}
+             readMoreLink={
+               latestPost.readMoreUrl ??
+               (latestPost.slug?.current ? `/blog/${latestPost.slug.current}` : "/blog")
+             }
+             readMoreTarget={latestPost.readMoreUrl ? "_blank" : "_self"}
+             imageSrc={
+               latestPost.mainImage
+                 ? urlFor(latestPost.mainImage).width(1416).height(738).url()
+                 : "/PBlog.png"
+             }
+             imageAlt={latestPost.mainImage?.alt ?? latestPost.title}
+           />
+         ) : (
+           <PrimaryBlog
+             title="No blog posts yet"
+             author=""
+             date=""
+             description="Once posts are published in Sanity, the latest one will appear here automatically."
+           />
+         )}
+
+
+         <div className="w-full lg:w-105 flex flex-col">
+           {nextThreePosts.length > 0 ? (
+             nextThreePosts.map((post) => (
+               <BlogComp
+                 key={post._id}
+                 title={post.title}
+                 author={post.author ?? "Unknown"}
+                 date={formatBlogDate(post.publishedAt)}
+                 readMoreLink={post.readMoreUrl ?? post.slug?.current}
+                 readMoreTarget={post.readMoreUrl ? "_blank" : "_self"}
+                 imageSrc={
+                   post.mainImage
+                     ? urlFor(post.mainImage).width(326).height(326).url()
+                     : "/PBlog.png"
+                 }
+                 imageAlt={post.mainImage?.alt ?? `${post.title} thumbnail`}
+               />
+             ))
+           ) : (
+             <BlogComp
+               title="No additional posts yet"
+               author="AIRES"
+               date=""
+               imageSrc="/PBlog.png"
+               imageAlt="No blog posts available"
+             />
+           )}
+         </div>
+       </div>
+       </section>
+
 
         <EventsComp />
         <div className="h-8" />
