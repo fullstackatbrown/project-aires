@@ -25,7 +25,7 @@ export default function EBoardPage() {
             <h2 className="text-xl mt-6 text-black">Leila Kim</h2>
             <p className="text-[#08B2E3] text-sm mt-1">Co-President</p>
 
-            <div className="w-10 h-[2px] bg-gray-200 mx-auto my-5" />
+            <div className="w-10 h-0.5 bg-gray-200 mx-auto my-5" />
 
             <p className="text-gray-500 text-sm leading-relaxed">
               Leila Kim is a senior concentrating in Computer Science and Applied Mathematics with a focus on deep learning and algorithmic fairness. She is passionate about developing AI technologies that prioritize ethical considerations and societal well-being. Through AIRES, she hopes to foster conversations about responsible AI development among Brown students.
@@ -42,7 +42,7 @@ export default function EBoardPage() {
             <h2 className="text-xl mt-6 text-black">Rosanna Zhao</h2>
             <p className="text-[#08B2E3] text-sm mt-1">Co-President</p>
 
-            <div className="w-10 h-[2px] bg-gray-200 mx-auto my-5" />
+            <div className="w-10 h-0.5 bg-gray-200 mx-auto my-5" />
 
             <p className="text-gray-500 text-sm leading-relaxed">
               Rosanna Zhao is a junior concentrating in Computer Science with an interest in human-computer interaction and privacy-preserving AI systems. She believes that ethical considerations should be at the forefront of technological innovation. As Co-President, she works to create educational opportunities that prepare students to make informed decisions about AI in their future careers.
