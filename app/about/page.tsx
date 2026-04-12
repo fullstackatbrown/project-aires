@@ -47,7 +47,7 @@ export default function AboutPage() {
         
         <div
           aria-hidden
-          className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full opacity-10 blur-2xl pointer-events-none"
+          className="absolute -bottom-20 -right-20 w-100 h-100 rounded-full opacity-10 blur-2xl pointer-events-none"
           style={{ background: "radial-gradient(circle, #08B2E3, transparent)" }}
         />
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── WHAT IS AIRES ── */}
-      <section className="bg-gradient-to-br from-[#e8f7fd] to-[#ddeefa] py-20 px-6">
+      <section className="bg-linear-to-br from-[#e8f7fd] to-[#ddeefa] py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#163078] text-center mb-8">
             What is the A.I. Robotics and Ethics Society?
