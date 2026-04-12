@@ -2,6 +2,7 @@ import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
 import ProjectComp from "./components/ProjectComp";
+import EventsComp from "./components/EventsComp";
 import Image from "next/image";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity-cms/lib/client";
@@ -26,6 +27,27 @@ function formatBlogDate(publishedAt?: string) {
     day: "numeric",
   });
 }
+
+const upcomingEvents = [
+  {
+    title: "AI Ethics Panel",
+    date: "Apr 18, 2026",
+    time: "6:30 PM",
+    location: "Salomon 101",
+  },
+  {
+    title: "Responsible Robotics Workshop",
+    date: "Apr 25, 2026",
+    time: "4:00 PM",
+    location: "Engineering Lab 2",
+  },
+  {
+    title: "AI Policy Roundtable",
+    date: "May 2, 2026",
+    time: "5:30 PM",
+    location: "Joukowsky Forum",
+  },
+];
 
 export default async function Home() {
   const allPosts = await client.fetch<HomeBlogPost[]>(postsQuery);
@@ -107,15 +129,6 @@ export default async function Home() {
             description="Research on governance frameworks for responsible AI deployment."
           />
         </div>
-
-        <div className="flex justify-center mt-10">
-          <a
-            href="/events"
-            className="bg-white text-[#08B2E3] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition duration-300"
-          >
-            View Events
-          </a>
-        </div>
         <div className="py-25">
           <div className= "max-w-full h-fit bg-[#C4CFD9] py-20 px-17.5">
               <div className="flex flex-col md:flex-row items-center gap-20 px-37.5 mt-10">
@@ -180,6 +193,14 @@ export default async function Home() {
             </div>
           </div>
         </div>
+        <section className="py-14 px-6 bg-white">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#08B2E3] mb-4">
+              Upcoming Events
+            </h2>
+          </div>
+          <EventsComp events={upcomingEvents} />
+        </section>
       </main>
     </>
   );
