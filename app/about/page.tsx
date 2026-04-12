@@ -44,11 +44,7 @@ export default function AboutPage() {
       {/* ── HERO ── */}
       <section className="relative flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-hidden">
         {/* Background blob */}
-        <div
-          aria-hidden
-          className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, #08B2E3, #163078)" }}
-        />
+        
         <div
           aria-hidden
           className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full opacity-10 blur-2xl pointer-events-none"
@@ -62,7 +58,7 @@ export default function AboutPage() {
           height={110}
           className="mb-6 drop-shadow-lg"
         />
-        <h1 className="text-5xl md:text-6xl font-extrabold text-[#08B2E3] text-center leading-tight mb-6">
+        <h1 className="text-5xl md:text-6xl font-semibold text-[#08B2E3] text-center leading-tight mb-6">
           About AIRES
         </h1>
       </section>
@@ -116,7 +112,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── OUR MISSION ── */}
-      <section className="bg-gradient-to-br from-[#163078] to-[#08B2E3] py-20 px-6 text-white">
+      <section className="bg-[#08B2E3] py-20 px-6 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
           <p className="text-lg md:text-xl leading-relaxed opacity-90">
