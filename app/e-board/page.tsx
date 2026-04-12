@@ -39,8 +39,15 @@ export default async function EBoardPage() {
             >
               {member.headshot ? (
                 <Image
-                  src={urlFor(member.headshot).url()}
+                  src={urlFor(member.headshot)
+                    .width(96)
+                    .height(96)
+                    .fit("crop")
+                    .auto("format")
+                    .url()}
                   alt={member.headshot.alt ?? member.name}
+                  width={96}
+                  height={96}
                   className="w-24 h-24 object-cover rounded-md mx-auto"
                 />
               ) : (
