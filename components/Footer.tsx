@@ -24,7 +24,8 @@ export default function Footer() {
 
     return(
         <div className="flex flex-col bg-[#08B2E3]">
-            <div className="flex flex-row w-screen px-18 py-10">
+            <div className="flex flex-row w-screen px-18 pt-10 pb-5">
+                
                 <div className="flex flex-row w-1/2 px-4">
                     <Image 
                         src = "/aires_logo.avif"
@@ -32,19 +33,14 @@ export default function Footer() {
                         height={200}
                         alt = "AIRES Logo"
                     />
-                    <div className="flex flex-col pl-4 text-2xl">
-                        <h1>Contact Us</h1>
-
-                        {/*
-                            socials.map((socialProperties) => 
-                            <Social properties = socialProperties={}/>)
-                        */}
-                    </div>
+                    <h1 className="pl-4 flex items-center h-full text-2xl text font-semibold">Creating AI Ethically and Responsibly.</h1>
                 </div>
                 <p className="w-1/2"> email form filler </p>
+
+
             </div>
-            <p className="font-light px-18">
-                @AI Robotics Ethics Society @ Brown. All Rights Reserved.
+            <p className="font-light px-22">
+                AIRES @ Brown. All Rights Reserved.
             </p>
         </div>
     )
