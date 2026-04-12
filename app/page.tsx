@@ -193,14 +193,9 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <section className="py-14 px-6 bg-white">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#08B2E3] mb-4">
-              Upcoming Events
-            </h2>
-          </div>
-          <EventsComp events={upcomingEvents} />
-        </section>
+
+        <EventsComp />
+        <div className="h-8" />
       </main>
     </>
   );
