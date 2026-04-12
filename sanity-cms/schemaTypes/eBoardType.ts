@@ -18,10 +18,7 @@ export const eBoardType = defineType({
       title: "Year",
       type: "string",
       validation: (rule) =>
-        rule
-          .required()
-          .regex(/^(19|20)\d{2}$/)
-          .error("Use format YYYY (example: 2026)."),
+        rule.regex(/^(19|20)\d{2}$/).error("Use format YYYY (example: 2026)."),
     }),
     defineField({
       name: "concentration",
@@ -46,7 +43,6 @@ export const eBoardType = defineType({
       name: "headshot",
       title: "Headshot",
       type: "image",
-      validation: (rule) => rule.required(),
       options: {
         hotspot: true,
       },
@@ -55,7 +51,6 @@ export const eBoardType = defineType({
           name: "alt",
           title: "Alternative text",
           type: "string",
-          validation: (rule) => rule.required(),
         }),
       ],
     }),
