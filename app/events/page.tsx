@@ -1,6 +1,4 @@
-import EventsHeader from '../components/EventsHeader';
 import EventsCalendar from '../components/EventsCalendar';
-import CalendarInfo from '../components/CalendarInfo';
 
 export default function EventsPage() {
   return (
