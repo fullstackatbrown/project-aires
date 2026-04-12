@@ -64,9 +64,9 @@ export default function AboutPage() {
       </section>
 
       {/* ── WHAT IS AIRES ── */}
-      <section className="bg-linear-to-br from-[#e8f7fd] to-[#ddeefa] py-20 px-6">
+      <section className="bg-[#dbf0fd] py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#163078] text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#000000] text-center mb-8">
             What is the A.I. Robotics and Ethics Society?
           </h2>
           <p className="text-base md:text-lg text-gray-700 text-center leading-relaxed max-w-3xl mx-auto">
@@ -85,7 +85,7 @@ export default function AboutPage() {
           {/* Story */}
           <div className="rounded-2xl border-2 border-[#08B2E3] p-8 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center gap-3 mb-4">
-              <h3 className="text-2xl font-bold text-[#163078]">Our Story</h3>
+              <h3 className="text-2xl font-bold text-[#000000]">Our Story</h3>
             </div>
             <p className="text-gray-600 leading-relaxed">
               AIRES at Brown is a collegiate chapter of the national AIRES organization.
@@ -98,7 +98,7 @@ export default function AboutPage() {
           {/* Goals */}
           <div className="rounded-2xl border-2 border-[#08B2E3] p-8 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center gap-3 mb-4">
-              <h3 className="text-2xl font-bold text-[#163078]">Our Goals</h3>
+              <h3 className="text-2xl font-bold text-[#000000]">Our Goals</h3>
             </div>
             <p className="text-gray-600 leading-relaxed">
               Our main goal is to help students currently at Brown consider AI ethics before
@@ -125,7 +125,7 @@ export default function AboutPage() {
       {/* ── ACTIVITIES ── */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#163078] text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#000000] text-center mb-4">
             What We Do
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 key={a.title}
                 className="rounded-2xl p-6 border border-[#c8eaf7] bg-[#f4fbff] hover:border-[#08B2E3] hover:shadow-md transition-all"
               >
-                <h4 className="text-lg font-bold text-[#163078] mb-2">{a.title}</h4>
+                <h4 className="text-lg font-bold text-[#000000] mb-2">{a.title}</h4>
                 <p className="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
               </div>
             ))}
@@ -147,7 +147,7 @@ export default function AboutPage() {
 
       {/* ── CTA ── */}
       <section className="py-20 px-6 bg-[#f0f9fe] text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#163078] mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#000000] mb-4">
           Join AIRES @ Brown
         </h2>
         <p className="text-gray-600 max-w-xl mx-auto mb-8 text-lg">

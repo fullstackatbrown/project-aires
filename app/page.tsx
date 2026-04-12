@@ -130,7 +130,7 @@ export default async function Home() {
           />
         </div>
         <div className="py-25">
-          <div className= "max-w-full h-fit bg-[#C4CFD9] py-20 px-17.5">
+          <div className= "max-w-full h-fit bg-[#dbf0fd] py-20 px-17.5">
               <div className="flex flex-col md:flex-row items-center gap-20 px-37.5 mt-10">
                 <div className="flex justify-center rounded-lg border-4 border-white">
                   <img src="/aires_clubfair.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
