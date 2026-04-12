@@ -23,7 +23,7 @@ export const postType = defineType({
       title: "Read More URL",
       type: "url",
       description:
-        'Optional external webpage for the "Read more" link. Leave blank to use the blog post body.',
+        'Prioritized external webpage (e.g., Substack\'s post) for the "Read more" link. Leave blank to use the blog post body. But it is recommended to provide this field, since it is easier to create and maintain the actual contents on, for instance, Substack.',
       validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
     }),
     defineField({
