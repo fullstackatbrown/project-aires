@@ -80,3 +80,19 @@ export const postBySlugQuery = defineQuery(
     body
   }`,
 );
+
+/**
+ * Fetch all e-board members with their `_id`, name, year, concentration, role at AIRES, short bio, and headshot.
+ * The e-board members are ordered by name in ascending order.
+ */
+export const eBoardMembersQuery = defineQuery(
+  `*[_type == "e-board"] | order(name asc) {
+    _id,
+    name,
+    year,
+    concentration,
+    roleAtAIRES,
+    shortBio,
+    headshot
+  }`,
+);
