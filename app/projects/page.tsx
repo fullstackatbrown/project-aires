@@ -13,9 +13,6 @@ export default function ProjectsPage() {
     <main className={`${montserrat.className} bg-[#FFFFFF]`}>
       <div className="flex flex-col items-center justify-start min-h-screen py-0.5 px-4 pt-8 pb-15">
         <h1 className="mt-2.5 mb-5 text-4xl font-bold text-[#08B2E3]">Our Projects</h1>
-        <p className="w-full max-w-3xl text-center text-gray-700 text-[17px] font-light leading-[30.88px] wrap-break-word">
-          Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-        </p>
         <div className="w-full mt-10 flex items-center px-4 md:px-17.5 gap-4">
           <span className="text-[25px] font-semibold text-[#08B2E3]">Current Projects</span>
           <hr className="flex-1 border-[1.2px] border-[#08B2E3]" />

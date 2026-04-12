@@ -73,8 +73,8 @@ export default async function Home() {
               <div className="md:w-1/2 flex justify-center md:justify-end">
                 <div className="">
                   <Image
-                    src="/BrownCarney.png"
-                    alt="Brown University Carney Hall"
+                    src="/team.png"
+                    alt="AIRES team"
                     className=""
                     width={670}
                     height={679}
@@ -133,7 +133,7 @@ export default async function Home() {
           <div className= "max-w-full h-fit bg-[#C4CFD9] py-20 px-17.5">
               <div className="flex flex-col md:flex-row items-center gap-20 px-37.5 mt-10">
                 <div className="flex justify-center rounded-lg border-4 border-white">
-                  <img src="/team-picture.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
+                  <img src="/aires_clubfair.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
                 </div>
                 <div className="md:w-1/2 gap-6.25 text-black">
                   <h2 className="text-3xl font-semibold mb-4">Leaders driven by a Mission</h2>

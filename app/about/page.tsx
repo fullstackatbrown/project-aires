@@ -151,7 +151,7 @@ export default function AboutPage() {
           Join AIRES @ Brown
         </h2>
         <p className="text-gray-600 max-w-xl mx-auto mb-8 text-lg">
-          “Interested in joining a research group? Reach out to us at aires at brown dot edu!”
+          Interested in joining a research group? Reach out to us at aires@brown.edu!
         </p>
         <a
           href="https://join.slack.com/t/airesbrown/shared_invite/zt-3tucaqpar-29cUAqhqmDM_wYRrwqGuYA"
