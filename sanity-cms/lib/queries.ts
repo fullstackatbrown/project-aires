@@ -57,3 +57,26 @@ export const featuredPostsQuery = defineQuery(
     mainImage
   }`,
 );
+
+/**
+ * Projects for /projects — current vs past are separate document types.
+ */
+export const currentProjectsQuery = defineQuery(
+  `*[_type == "currentProject"] | order(_createdAt desc) {
+    _id,
+    title,
+    summary,
+    fullDescription,
+    images
+  }`,
+);
+
+export const pastProjectsQuery = defineQuery(
+  `*[_type == "pastProject"] | order(_createdAt desc) {
+    _id,
+    title,
+    summary,
+    fullDescription,
+    images
+  }`,
+);
