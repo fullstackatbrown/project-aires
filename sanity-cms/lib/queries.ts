@@ -86,7 +86,7 @@ export const postBySlugQuery = defineQuery(
  * The e-board members are ordered by name in ascending order.
  */
 export const eBoardMembersQuery = defineQuery(
-  `*[_type == "eBoard"] | order(name asc) {
+  `*[_type == "e-board"] | order(name asc) {
     _id,
     name,
     year,

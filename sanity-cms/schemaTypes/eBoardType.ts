@@ -2,7 +2,7 @@ import { DocumentTextIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const eBoardType = defineType({
-  name: "eBoard",
+  name: "e-board",
   title: "E-Board",
   type: "document",
   icon: DocumentTextIcon,

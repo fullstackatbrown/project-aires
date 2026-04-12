@@ -16,11 +16,11 @@ export const structure: StructureResolver = (S) =>
               S.documentTypeListItem("author").title("Authors"),
             ]),
         ),
-      S.documentTypeListItem("eBoard").title("E-Board"),
+      S.documentTypeListItem("e-board").title("E-Board"),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !["post", "category", "author", "eBoard"].includes(item.getId()!),
+          !["post", "category", "author", "e-board"].includes(item.getId()!),
       ),
     ]);
