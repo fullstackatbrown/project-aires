@@ -33,7 +33,7 @@ export default function EventsCalendar() {
           rel="noopener noreferrer"
           className="px-6 py-3 bg-[#08B2E3] text-white font-semibold rounded-lg hover:bg-[#08B2E3] transition-colors duration-200"
         >
-          View on Google Calendar
+          Add to G-cal
         </a>
       </div>
     </div>
