@@ -3,8 +3,60 @@ import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
 import ProjectComp from "./components/ProjectComp";
 import Image from "next/image";
+import { client } from "../sanity-cms/lib/client";
+import { urlFor } from "../sanity-cms/lib/image";
+import { currentProjectsQuery } from "../sanity-cms/lib/queries";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { TypedObject } from "@portabletext/types";
 
-export default function Home() {
+type ProjectDoc = {
+  _id: string;
+  title: string | null;
+  summary: string | null;
+  fullDescription: TypedObject[] | null;
+  images: SanityImageSource[] | null;
+};
+
+function imageAltFrom(item: SanityImageSource): string {
+  if (
+    typeof item === "object" &&
+    item !== null &&
+    "alt" in item &&
+    typeof (item as { alt?: string }).alt === "string" &&
+    (item as { alt: string }).alt.trim() !== ""
+  ) {
+    return (item as { alt: string }).alt;
+  }
+  return "Project image";
+}
+
+function projectDocToCardProps(doc: ProjectDoc) {
+  const list = doc.images?.filter(Boolean) ?? [];
+  const imageSrc =
+    list.length > 0
+      ? list.map((img) => urlFor(img).width(800).height(800).fit("crop").url())
+      : ["/PBlog.png"];
+  const imageAlt =
+    list.length > 0 ? list.map((img) => imageAltFrom(img)) : ["Project image"];
+
+  const fullDesc = doc.fullDescription;
+  const hasPortableBody = Array.isArray(fullDesc) && fullDesc.length > 0;
+
+  return {
+    key: doc._id,
+    title: doc.title?.trim() || "Untitled project",
+    description: doc.summary?.trim() || "",
+    imageSrc,
+    imageAlt,
+    detailTitle: doc.title?.trim() || "Untitled project",
+    detailBody: hasPortableBody ? fullDesc : null,
+  };
+}
+
+export default async function Home() {
+  const currentProjects = await client.fetch<ProjectDoc[]>(currentProjectsQuery);
+  const featuredProjects = currentProjects.slice(0, 3);
+
   return (
     <>
       <main className = "bg-white h-auto w-full ">
@@ -66,19 +118,25 @@ export default function Home() {
             className="h-fill w-fill px-6 py-1 text-base"
           />
         </div>
-        <div className="flex flex-row lg:flex-row items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
-          <ProjectComp
-            title="AI Safety Workshop"
-            description="Hands-on sessions exploring practical AI safety and ethics techniques."
-          />
-          <ProjectComp
-            title="Robotics for Social Good"
-            description="Student-led robotics projects focused on community impact and accessibility."
-          />
-          <ProjectComp
-            title="Policy & Governance Research"
-            description="Research on governance frameworks for responsible AI deployment."
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
+          {featuredProjects.length === 0 ? (
+            <p className="col-span-full text-sm text-gray-600">No current projects.</p>
+          ) : (
+            featuredProjects.map((doc) => {
+              const props = projectDocToCardProps(doc);
+              return (
+                <ProjectComp
+                  key={props.key}
+                  title={props.title}
+                  description={props.description}
+                  imageSrc={props.imageSrc}
+                  imageAlt={props.imageAlt}
+                  detailTitle={props.detailTitle}
+                  detailBody={props.detailBody}
+                />
+              );
+            })
+          )}
         </div>
 
         <div className="flex justify-center mt-10">
