@@ -36,11 +36,25 @@ interface SanityPost {
 }
 
 /**
- * Introduction to the blog page.
- * This is hardcoded here for simplicity, which should be sufficient (for now).
+ * Abstract/introduction for the blog page,
+ * which mainly includes a link to the Substack page where the blog posts are hosted.
  */
-const BLOG_INTRO =
-  "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.";
+const BLOG_ABSTRACT = (
+  <>
+    Visit{" "}
+    <a
+      href="https://airesatbrown.substack.com" // Link to the Substack page for the blog.
+      target="_blank" // Open in a new tab since it's an external link.
+      rel="noopener noreferrer" // Security/privacy protections for external links.
+      className="font-medium text-[#1CB2DF] underline underline-offset-2 hover:no-underline"
+    >
+      this link
+    </a>{" "}
+    to read the blog posts, which are hosted on Substack. The latest posts are
+    also featured on this page. Click the &quot;Read more&quot; link on each
+    post to read the full content on Substack.
+  </>
+);
 
 /**
  * Blog page component.
@@ -86,7 +100,7 @@ export default async function BlogPage({
           Blog
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-500">
-          {BLOG_INTRO}
+          {BLOG_ABSTRACT}
         </p>
       </section>
 
