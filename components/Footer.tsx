@@ -1,5 +1,6 @@
 "use client"; 
 import Image from "next/image"; 
+import Link from "next/link"; 
 
 
 export default function Footer() {
@@ -30,17 +31,21 @@ export default function Footer() {
                 <div className="flex flex-row w-1/2 px-4">
                     <Image 
                         src = "/aires_logo.avif"
-                        width={200}
-                        height={200}
+                        width={220}
+                        height={220}
                         alt = "AIRES Logo"
                     />
                     <h1 className="pl-4 flex items-center h-full text-2xl text font-semibold">Creating AI Ethically and Responsibly.</h1>
                 </div>
                 
                 <div className="flex flex-row">
-                    <div className = "flex flex-col">
-                        <h1 className="font-semibold text-2xl mx-4 ">Key Links</h1>
-
+                    <div className = "flex flex-col mr-8">
+                        <h1 className="font-semibold text-2xl">Key Links</h1>
+                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/about">About Us</Link>
+                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/blog">Our Blog</Link>
+                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/e-board">Meet Our Team</Link>
+                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/events">Events</Link>
+                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/projects">Projects</Link>
                     </div>
 
                     <div className = "flex flex-col ml-4">
