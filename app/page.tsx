@@ -8,6 +8,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity-cms/lib/client";
 import { urlFor } from "@/sanity-cms/lib/image";
 import { postsQuery } from "@/sanity-cms/lib/queries";
+import { fetchNextIcsEvents } from "./lib/googleCalendarIcs";
 
 interface HomeBlogPost {
   _id: string;
@@ -30,26 +31,7 @@ function formatBlogDate(publishedAt?: string) {
   });
 }
 
-const upcomingEvents = [
-  {
-    title: "AI Ethics Panel",
-    date: "Apr 18, 2026",
-    time: "6:30 PM",
-    location: "Salomon 101",
-  },
-  {
-    title: "Responsible Robotics Workshop",
-    date: "Apr 25, 2026",
-    time: "4:00 PM",
-    location: "Engineering Lab 2",
-  },
-  {
-    title: "AI Policy Roundtable",
-    date: "May 2, 2026",
-    time: "5:30 PM",
-    location: "Joukowsky Forum",
-  },
-];
+const upcomingEvents = await fetchNextIcsEvents(3);
 
 export default async function Home() {
   const allPosts = await client.fetch<HomeBlogPost[]>(postsQuery);
@@ -219,7 +201,7 @@ export default async function Home() {
        </section>
 
 
-        <EventsComp />
+        <EventsComp events={upcomingEvents} />
         <div className="h-8" />
       </main>
     </>
