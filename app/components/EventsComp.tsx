@@ -50,6 +50,11 @@ export default function EventsComp({
 }: {
   events?: EventItem[];
 }) {
+  const fallbackEvents: EventItem[] = [
+    { title: "No upcoming events", date: "TBA", time: "TBA", location: "Check back soon" },
+  ];
+  const displayEvents = events && events.length > 0 ? events : fallbackEvents;
+
   return (
     <section className="w-full mt-10 pb-16 md:pb-20">
       <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32">
@@ -62,7 +67,7 @@ export default function EventsComp({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 mt-2 md:mt-3">
-              {events.slice(0, 3).map((event, idx) => (
+              {displayEvents.slice(0, 3).map((event, idx) => (
                 <div
                   key={`${event.title}-${idx}`}
                   className={`md:px-5 ${
