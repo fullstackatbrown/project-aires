@@ -1,6 +1,14 @@
 import type { StructureResolver } from "sanity/structure";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
+const listedTypeIds = new Set([
+  'post',
+  'category',
+  'author',
+  'currentProject',
+  'pastProject',
+])
+
 export const structure: StructureResolver = (S) =>
   S.list()
     .title("Content")
@@ -16,6 +24,9 @@ export const structure: StructureResolver = (S) =>
             ]),
         ),
       S.documentTypeListItem("e-board").title("E-Board"),
+      S.divider(),
+      S.documentTypeListItem('currentProject').title('Current projects'),
+      S.documentTypeListItem('pastProject').title('Past projects'),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
