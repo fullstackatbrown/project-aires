@@ -1,5 +1,6 @@
 import { Montserrat } from "next/font/google";
 import ProjectComp from "../components/ProjectComp";
+<<<<<<< HEAD
 import { client } from "../../sanity-cms/lib/client";
 import { urlFor } from "../../sanity-cms/lib/image";
 import {
@@ -9,6 +10,8 @@ import {
 import "./projects.css";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import type { TypedObject } from "@portabletext/types";
+=======
+>>>>>>> origin/main
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -68,6 +71,7 @@ export default async function ProjectsPage() {
   return (
     <main className={`${montserrat.className} bg-[#FFFFFF]`}>
       <div className="flex flex-col items-center justify-start min-h-screen py-0.5 px-4 pt-8 pb-15">
+<<<<<<< HEAD
         <h1 className="text-4xl text-spacing font-bold text-[#08B2E3]">
           Our Projects
         </h1>
@@ -77,6 +81,9 @@ export default async function ProjectsPage() {
           molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
           delectus, ut aut reiciendis
         </p>
+=======
+        <h1 className="mt-2.5 mb-5 text-4xl font-bold text-[#08B2E3]">Our Projects</h1>
+>>>>>>> origin/main
         <div className="w-full mt-10 flex items-center px-4 md:px-17.5 gap-4">
           <span className="text-[25px] font-semibold text-[#08B2E3]">
             Current Projects

@@ -1,5 +1,5 @@
 import { DocumentTextIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const postType = defineType({
   name: "post",
@@ -17,6 +17,14 @@ export const postType = defineType({
       options: {
         source: "title",
       },
+    }),
+    defineField({
+      name: "readMoreUrl",
+      title: "Read More URL",
+      type: "url",
+      description:
+        'Prioritized external webpage (e.g., Substack\'s post) for the "Read more" link. Leave blank to use the blog post body. But it is recommended to provide this field, since it is easier to create and maintain the actual contents on, for instance, Substack.',
+      validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
     }),
     defineField({
       name: "author",
@@ -38,17 +46,14 @@ export const postType = defineType({
       ],
     }),
     defineField({
-      name: "categories",
-      type: "array",
-      of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
-    }),
-    defineField({
       name: "publishedAt",
       type: "datetime",
     }),
     defineField({
       name: "body",
       type: "blockContent",
+      description:
+        'The main content of the post. Ignored if "Read More URL" is provided.',
     }),
     defineField({
       name: "abstract",

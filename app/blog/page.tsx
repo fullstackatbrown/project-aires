@@ -20,7 +20,7 @@ const POSTS_PER_PAGE = 5;
 const PAGINATION_BUTTONS_TO_RENDER = 3;
 
 /**
- * Interface for the Sanity post type.
+ * Interface for the Sanity post type on the main blog page.
  * This partially matches the `post` document schema defined in `sanity-cms/schemaTypes/postType.ts`
  * but only includes the fields we need for rendering the blog page.
  */
@@ -28,6 +28,7 @@ interface SanityPost {
   _id: string;
   title: string;
   slug?: { current: string };
+  readMoreUrl?: string;
   author?: string;
   publishedAt?: string;
   mainImage?: SanityImageSource & { alt?: string };
@@ -35,11 +36,25 @@ interface SanityPost {
 }
 
 /**
- * Introduction to the blog page.
- * This is hardcoded here for simplicity, which should be sufficient (for now).
+ * Abstract/introduction for the blog page,
+ * which mainly includes a link to the Substack page where the blog posts are hosted.
  */
-const BLOG_INTRO =
-  "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.";
+const BLOG_ABSTRACT = (
+  <>
+    Visit{" "}
+    <a
+      href="https://airesatbrown.substack.com" // Link to the Substack page for the blog.
+      target="_blank" // Open in a new tab since it's an external link.
+      rel="noopener noreferrer" // Security/privacy protections for external links.
+      className="font-medium text-[#1CB2DF] underline underline-offset-2 hover:no-underline"
+    >
+      this link
+    </a>{" "}
+    to read the blog posts, which are hosted on Substack. The latest posts are
+    also featured on this page. Click the &quot;Read more&quot; link on each
+    post to read the full content on Substack.
+  </>
+);
 
 /**
  * Blog page component.
@@ -85,7 +100,7 @@ export default async function BlogPage({
           Blog
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-500">
-          {BLOG_INTRO}
+          {BLOG_ABSTRACT}
         </p>
       </section>
 
@@ -94,49 +109,69 @@ export default async function BlogPage({
         <div className="min-w-0 flex-1 md:order-1">
           <ul className="space-y-10">
             {/* List of "normal" posts for the current page. */}
-            {posts.map((post) => (
-              <li key={post._id} className="flex flex-col gap-4 sm:flex-row">
-                {post.mainImage && (
-                  <div className="h-48 w-full shrink-0 overflow-hidden rounded-lg sm:h-52 sm:w-52">
-                    <Image
-                      src={urlFor(post.mainImage).width(416).height(416).url()}
-                      alt={post.mainImage?.alt ?? ""}
-                      width={208}
-                      height={208}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                )}
-                <div className="flex min-w-0 flex-col justify-center">
-                  <p className="text-sm text-black">
-                    {post.author ?? "Unknown"} |{" "}
-                    {post.publishedAt
-                      ? new Date(post.publishedAt).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : ""}
-                  </p>
-                  <h2 className="mt-1 text-xl font-bold text-neutral-800">
-                    {post.title}
-                  </h2>
-                  {post.abstract && (
-                    <p className="mt-2 text-sm text-neutral-500">
-                      {post.abstract}
-                    </p>
+            {posts.map((post) => {
+              // Determine the URL for the "Read more" link.
+              // If `readMoreUrl` is provided, use it as an external link.
+              // Otherwise, if the post has a slug, link to the blog post body.
+              // If neither is available, there will be no "Read more" link, and the post body will not be accessible.
+              const readMoreHref =
+                post.readMoreUrl ??
+                (post.slug?.current ? `/blog/${post.slug.current}` : null);
+              return (
+                <li key={post._id} className="flex flex-col gap-4 sm:flex-row">
+                  {post.mainImage && (
+                    <div className="h-48 w-full shrink-0 overflow-hidden rounded-lg sm:h-52 sm:w-52">
+                      <Image
+                        src={urlFor(post.mainImage)
+                          .width(416)
+                          .height(416)
+                          .url()}
+                        alt={post.mainImage?.alt ?? ""}
+                        width={208}
+                        height={208}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   )}
-                  {post.slug?.current ? (
-                    <Link
-                      href={`/blog/${post.slug.current}`}
-                      className="mt-3 inline-flex items-center text-sm font-medium text-[#1CB2DF] hover:underline"
-                    >
-                      Read more &rarr;
-                    </Link>
-                  ) : null}
-                </div>
-              </li>
-            ))}
+                  <div className="flex min-w-0 flex-col justify-center">
+                    <p className="text-sm text-black">
+                      <span className="font-medium">
+                        {post.author ?? "Unknown"}
+                      </span>{" "}
+                      |{" "}
+                      {post.publishedAt
+                        ? new Date(post.publishedAt).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            },
+                          )
+                        : ""}
+                    </p>
+                    <h2 className="mt-1 text-xl font-bold text-neutral-800">
+                      {post.title}
+                    </h2>
+                    {post.abstract && (
+                      <p className="mt-2 text-sm text-black">{post.abstract}</p>
+                    )}
+                    {readMoreHref ? (
+                      <a
+                        href={readMoreHref}
+                        target={post.readMoreUrl ? "_blank" : undefined}
+                        rel={
+                          post.readMoreUrl ? "noopener noreferrer" : undefined
+                        }
+                        className="mt-3 inline-flex items-center text-sm font-medium text-[#1CB2DF] hover:underline"
+                      >
+                        Read more &rarr;
+                      </a>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
 
           {/* No posts yet. */}
@@ -237,50 +272,66 @@ export default async function BlogPage({
             </div>
             <ul className="mt-6 space-y-6">
               {/* List of featured posts. */}
-              {featuredPosts.map((post) => (
-                <li key={post._id} className="flex gap-4">
-                  {post.mainImage && (
-                    <div className="h-20 w-20 shrink-0 overflow-hidden rounded-lg">
-                      <Image
-                        src={urlFor(post.mainImage)
-                          .width(160)
-                          .height(160)
-                          .url()}
-                        alt={post.mainImage?.alt ?? ""}
-                        width={80}
-                        height={80}
-                        className="h-full w-full object-cover"
-                      />
+              {featuredPosts.map((post) => {
+                // Determine the URL for the "Read more" link.
+                // If `readMoreUrl` is provided, use it as an external link.
+                // Otherwise, if the post has a slug, link to the blog post body.
+                // If neither is available, there will be no "Read more" link, and the post body will not be accessible.
+                const readMoreHref =
+                  post.readMoreUrl ??
+                  (post.slug?.current ? `/blog/${post.slug.current}` : null);
+                return (
+                  <li key={post._id} className="flex gap-4">
+                    {post.mainImage && (
+                      <div className="h-20 w-20 shrink-0 overflow-hidden rounded-lg">
+                        <Image
+                          src={urlFor(post.mainImage)
+                            .width(160)
+                            .height(160)
+                            .url()}
+                          alt={post.mainImage?.alt ?? ""}
+                          width={80}
+                          height={80}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs text-black">
+                        <span className="font-medium">
+                          {post.author ?? "Unknown"}
+                        </span>{" "}
+                        |{" "}
+                        {post.publishedAt
+                          ? new Date(post.publishedAt).toLocaleDateString(
+                              "en-US",
+                              {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              },
+                            )
+                          : ""}
+                      </p>
+                      <h3 className="mt-0.5 text-sm font-bold text-black">
+                        {post.title}
+                      </h3>
+                      {readMoreHref ? (
+                        <a
+                          href={readMoreHref}
+                          target={post.readMoreUrl ? "_blank" : undefined}
+                          rel={
+                            post.readMoreUrl ? "noopener noreferrer" : undefined
+                          }
+                          className="mt-2 inline-block text-sm font-medium text-[#1CB2DF] hover:underline"
+                        >
+                          Read more &rarr;
+                        </a>
+                      ) : null}
                     </div>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs text-black">
-                      {post.author ?? "Unknown"} |{" "}
-                      {post.publishedAt
-                        ? new Date(post.publishedAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            },
-                          )
-                        : ""}
-                    </p>
-                    <h3 className="mt-0.5 text-sm font-bold text-black">
-                      {post.title}
-                    </h3>
-                    {post.slug?.current ? (
-                      <Link
-                        href={`/blog/${post.slug.current}`}
-                        className="mt-2 inline-block text-sm font-medium text-[#1CB2DF] hover:underline"
-                      >
-                        Read more &rarr;
-                      </Link>
-                    ) : null}
-                  </div>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </aside>

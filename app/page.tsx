@@ -2,60 +2,41 @@ import Button from "./components/Button";
 import PrimaryBlog from "./components/PrimaryBlog";
 import BlogComp from "./components/BlogComp"; // added
 import ProjectComp from "./components/ProjectComp";
+import EventsComp from "./components/EventsComp";
 import Image from "next/image";
-import { client } from "../sanity-cms/lib/client";
-import { urlFor } from "../sanity-cms/lib/image";
-import { currentProjectsQuery } from "../sanity-cms/lib/queries";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import type { TypedObject } from "@portabletext/types";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { client } from "@/sanity-cms/lib/client";
+import { urlFor } from "@/sanity-cms/lib/image";
+import { postsQuery } from "@/sanity-cms/lib/queries";
+import { fetchNextIcsEvents } from "./lib/googleCalendarIcs";
 
-type ProjectDoc = {
+interface HomeBlogPost {
   _id: string;
-  title: string | null;
-  summary: string | null;
-  fullDescription: TypedObject[] | null;
-  images: SanityImageSource[] | null;
-};
-
-function imageAltFrom(item: SanityImageSource): string {
-  if (
-    typeof item === "object" &&
-    item !== null &&
-    "alt" in item &&
-    typeof (item as { alt?: string }).alt === "string" &&
-    (item as { alt: string }).alt.trim() !== ""
-  ) {
-    return (item as { alt: string }).alt;
-  }
-  return "Project image";
+  title: string;
+  slug?: { current: string };
+  readMoreUrl?: string;
+  author?: string;
+  publishedAt?: string;
+  mainImage?: SanityImageSource & { alt?: string };
+  abstract?: string;
 }
 
-function projectDocToCardProps(doc: ProjectDoc) {
-  const list = doc.images?.filter(Boolean) ?? [];
-  const imageSrc =
-    list.length > 0
-      ? list.map((img) => urlFor(img).width(800).height(800).fit("crop").url())
-      : ["/PBlog.png"];
-  const imageAlt =
-    list.length > 0 ? list.map((img) => imageAltFrom(img)) : ["Project image"];
+function formatBlogDate(publishedAt?: string) {
+  if (!publishedAt) return "";
 
-  const fullDesc = doc.fullDescription;
-  const hasPortableBody = Array.isArray(fullDesc) && fullDesc.length > 0;
-
-  return {
-    key: doc._id,
-    title: doc.title?.trim() || "Untitled project",
-    description: doc.summary?.trim() || "",
-    imageSrc,
-    imageAlt,
-    detailTitle: doc.title?.trim() || "Untitled project",
-    detailBody: hasPortableBody ? fullDesc : null,
-  };
+  return new Date(publishedAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
+
+const upcomingEvents = await fetchNextIcsEvents(3);
 
 export default async function Home() {
-  const currentProjects = await client.fetch<ProjectDoc[]>(currentProjectsQuery);
-  const featuredProjects = currentProjects.slice(0, 3);
+  const allPosts = await client.fetch<HomeBlogPost[]>(postsQuery);
+  const [latestPost, ...otherPosts] = allPosts;
+  const nextThreePosts = otherPosts.slice(0, 3);
 
   return (
     <>
@@ -76,8 +57,8 @@ export default async function Home() {
               <div className="md:w-1/2 flex justify-center md:justify-end">
                 <div className="">
                   <Image
-                    src="/BrownCarney.png"
-                    alt="Brown University Carney Hall"
+                    src="/team.png"
+                    alt="AIRES team"
                     className=""
                     width={670}
                     height={679}
@@ -138,20 +119,11 @@ export default async function Home() {
             })
           )}
         </div>
-
-        <div className="flex justify-center mt-10">
-          <a
-            href="/events"
-            className="bg-white text-[#08B2E3] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition duration-300"
-          >
-            View Events
-          </a>
-        </div>
         <div className="py-25">
-          <div className= "max-w-full h-fit bg-[#C4CFD9] py-20 px-17.5">
+          <div className= "max-w-full h-fit bg-[#dbf0fd] py-20 px-17.5">
               <div className="flex flex-col md:flex-row items-center gap-20 px-37.5 mt-10">
                 <div className="flex justify-center rounded-lg border-4 border-white">
-                  <img src="/team-picture.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
+                  <img src="/aires_clubfair.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
                 </div>
                 <div className="md:w-1/2 gap-6.25 text-black">
                   <h2 className="text-3xl font-semibold mb-4">Leaders driven by a Mission</h2>
@@ -166,51 +138,77 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="px-[157.5px] pb-25">
-          <div className="flex items-center pb-15 gap-4">
-            <div className="flex items-center w-full gap-4">
-              <span className="text-[40px] font-semibold text-[#08B2E3]">Blog</span>
-              <hr className="border-black flex-1" />
-              <Button
-                text="Read More Here"
-                href="/blog"
-                filled={2}
-                className="h-fill w-fill px-6 py-1 text-base"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <PrimaryBlog
-              title="How AI Ethics Shapes Real-World Robotics"
-              date="March 14, 2026"
-              description="A quick look at how ethical design principles guide safe, fair, and transparent robotics systems in education and industry."
-            />
+      <section className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pb-14 lg:pb-20">
+       <div className="flex items-center w-full gap-4 pb-8 lg:pb-12">
+         <span className="text-[32px] md:text-[40px] font-semibold text-[#08B2E3] whitespace-nowrap">Blog</span>
+         <hr className="border-black flex-1" />
+         <Button text="Read More Here" href="/blog" filled={2} className="px-6 py-1 text-base" />
+       </div>
 
-            <div className="w-full lg:w-105 flex flex-col">
-              <BlogComp
-                title="AI Policy Updates You Should Know"
-                author="AIRES Team"
-                date="March 10, 2026"
-                imageSrc="/PBlog.png"
-                imageAlt="AI policy blog thumbnail"
-              />
-              <BlogComp
-                title="Building Trustworthy ML Systems"
-                author="Research Committee"
-                date="March 05, 2026"
-                imageSrc="/PBlog.png"
-                imageAlt="Trustworthy ML blog thumbnail"
-              />
-              <BlogComp
-                title="Ethics in Autonomous Robotics"
-                author="AIRES Editorial"
-                date="February 28, 2026"
-                imageSrc="/PBlog.png"
-                imageAlt="Autonomous robotics blog thumbnail"
-              />
-            </div>
-          </div>
-        </div>
+
+       <div className="flex flex-col lg:flex-row gap-8 items-start">
+         {latestPost ? (
+           <PrimaryBlog
+             title={latestPost.title}
+             author={latestPost.author ?? "Unknown"}
+             date={formatBlogDate(latestPost.publishedAt)}
+             description={latestPost.abstract ?? "Read the latest update from AIRES."}
+             readMoreLink={
+               latestPost.readMoreUrl ??
+               (latestPost.slug?.current ? `/blog/${latestPost.slug.current}` : "/blog")
+             }
+             readMoreTarget={latestPost.readMoreUrl ? "_blank" : "_self"}
+             imageSrc={
+               latestPost.mainImage
+                 ? urlFor(latestPost.mainImage).width(1416).height(738).url()
+                 : "/PBlog.png"
+             }
+             imageAlt={latestPost.mainImage?.alt ?? latestPost.title}
+           />
+         ) : (
+           <PrimaryBlog
+             title="No blog posts yet"
+             author=""
+             date=""
+             description="Once posts are published in Sanity, the latest one will appear here automatically."
+           />
+         )}
+
+
+         <div className="w-full lg:w-105 flex flex-col">
+           {nextThreePosts.length > 0 ? (
+             nextThreePosts.map((post) => (
+               <BlogComp
+                 key={post._id}
+                 title={post.title}
+                 author={post.author ?? "Unknown"}
+                 date={formatBlogDate(post.publishedAt)}
+                 readMoreLink={post.readMoreUrl ?? post.slug?.current}
+                 readMoreTarget={post.readMoreUrl ? "_blank" : "_self"}
+                 imageSrc={
+                   post.mainImage
+                     ? urlFor(post.mainImage).width(326).height(326).url()
+                     : "/PBlog.png"
+                 }
+                 imageAlt={post.mainImage?.alt ?? `${post.title} thumbnail`}
+               />
+             ))
+           ) : (
+             <BlogComp
+               title="No additional posts yet"
+               author="AIRES"
+               date=""
+               imageSrc="/PBlog.png"
+               imageAlt="No blog posts available"
+             />
+           )}
+         </div>
+       </div>
+       </section>
+
+
+        <EventsComp events={upcomingEvents} />
+        <div className="h-8" />
       </main>
     </>
   );

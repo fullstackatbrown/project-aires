@@ -31,7 +31,7 @@ export default function Navbar() {
 
     return (
         // Sticky top bar so navigation remains visible while scrolling
-        <header className="sticky top-0 z-50 border-b border-[#d7ecf4] bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/85">
+        <header className="sticky top-0 z-50 border-b border-[#d7ecf4] bg-white">
             <nav className="bg-[#FFFFFF] mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-6" aria-label="Main navigation">
                 {/* logo + site title; clicking collapses mobile menu. */}
                 <Link href="/" className="group flex items-center gap-3" onClick={() => setIsOpen(false)}>

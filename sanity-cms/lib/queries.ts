@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 /**
- * Fetch all posts with their title, slug, author name, published date, main image, and abstract.
+ * Fetch all posts with their `_id`, title, slug, read-more URL, author name, published date, main image, and abstract.
  * The posts are ordered by published date in descending order.
  * `author->name` is a GROQ syntax to fetch the name of the author from the referenced author document,
  * where a document in Sanity:
@@ -14,6 +14,7 @@ export const postsQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     mainImage,
@@ -35,6 +36,7 @@ export const paginatedPostsQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     mainImage,
@@ -52,6 +54,7 @@ export const featuredPostsQuery = defineQuery(
     _id,
     title,
     slug,
+    readMoreUrl,
     "author": author->name,
     publishedAt,
     mainImage
@@ -59,24 +62,37 @@ export const featuredPostsQuery = defineQuery(
 );
 
 /**
- * Projects for /projects — current vs past are separate document types.
+ * Fetch one post by slug (`slug.current`),
+ * which is used for `./app/blog/[slug]/page.tsx`.
+ * `[slug]` is used for dynamic routing in Next.js in order to create routes for specific blog posts from dynamic data
+ * even if the exact segment names are not known at build time.
+ * Reference: <https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes>.
  */
-export const currentProjectsQuery = defineQuery(
-  `*[_type == "currentProject"] | order(_createdAt desc) {
+export const postBySlugQuery = defineQuery(
+  `*[_type == "post" && slug.current == $slug][0] {
     _id,
     title,
-    summary,
-    fullDescription,
-    images
+    slug,
+    readMoreUrl,
+    "author": author->name,
+    publishedAt,
+    abstract,
+    body
   }`,
 );
 
-export const pastProjectsQuery = defineQuery(
-  `*[_type == "pastProject"] | order(_createdAt desc) {
+/**
+ * Fetch all e-board members with their `_id`, name, year, concentration, role at AIRES, short bio, and headshot.
+ * The e-board members are ordered by name in ascending order.
+ */
+export const eBoardMembersQuery = defineQuery(
+  `*[_type == "e-board"] | order(name asc) {
     _id,
-    title,
-    summary,
-    fullDescription,
-    images
+    name,
+    year,
+    concentration,
+    roleAtAIRES,
+    shortBio,
+    headshot
   }`,
 );
