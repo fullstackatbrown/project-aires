@@ -17,6 +17,7 @@ export default function ProjectComp({
   imageSrc = DEFAULT_IMAGES,
   imageAlt = DEFAULT_ALTS,
   detailTitle,
+  detailTeamMembers,
   detailBody,
   readMoreHref = "/projects",
 }: {
@@ -26,6 +27,8 @@ export default function ProjectComp({
   imageAlt?: string[];
   /** Shown in the popup title; defaults to `title` when using the modal. */
   detailTitle?: string;
+  /** Shown under the popup title when provided. */
+  detailTeamMembers?: TypedObject[] | null;
   /** When non-empty, “Read more” opens the popup instead of navigating. */
   detailBody?: TypedObject[] | null;
   readMoreHref?: string;
@@ -87,6 +90,7 @@ export default function ProjectComp({
               isOpen={modalOpen}
               onClose={() => setModalOpen(false)}
               title={modalHeading}
+              teamMembers={detailTeamMembers}
               body={detailBody ?? null}
             />
           </>

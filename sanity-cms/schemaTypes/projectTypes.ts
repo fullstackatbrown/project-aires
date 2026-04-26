@@ -8,6 +8,12 @@ const projectFields = [
     validation: (Rule) => Rule.required(),
   }),
   defineField({
+    name: "teamMembers",
+    title: "Team Members",
+    type: "blockContent",
+    description: "Rich text shown under the project title in the popup.",
+  }),
+  defineField({
     name: "summary",
     title: "Summary",
     type: "string",

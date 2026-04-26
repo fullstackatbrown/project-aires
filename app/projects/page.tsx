@@ -17,6 +17,7 @@ const montserrat = Montserrat({
 type ProjectDoc = {
   _id: string;
   title: string | null;
+  teamMembers: TypedObject[] | null;
   summary: string | null;
   fullDescription: TypedObject[] | null;
   images: SanityImageSource[] | null;
@@ -46,6 +47,9 @@ function projectDocToCardProps(doc: ProjectDoc) {
 
   const fullDesc = doc.fullDescription;
   const hasPortableBody = Array.isArray(fullDesc) && fullDesc.length > 0;
+  const teamMembersBody = doc.teamMembers;
+  const hasTeamMembersBody =
+    Array.isArray(teamMembersBody) && teamMembersBody.length > 0;
 
   return {
     key: doc._id,
@@ -54,6 +58,7 @@ function projectDocToCardProps(doc: ProjectDoc) {
     imageSrc,
     imageAlt,
     detailTitle: doc.title?.trim() || "Untitled project",
+    detailTeamMembers: hasTeamMembersBody ? teamMembersBody : null,
     detailBody: hasPortableBody ? fullDesc : null,
   };
 }
@@ -98,6 +103,7 @@ export default async function ProjectsPage() {
                   imageSrc={props.imageSrc}
                   imageAlt={props.imageAlt}
                   detailTitle={props.detailTitle}
+                  detailTeamMembers={props.detailTeamMembers}
                   detailBody={props.detailBody}
                 />
               );
@@ -126,6 +132,7 @@ export default async function ProjectsPage() {
                   imageSrc={props.imageSrc}
                   imageAlt={props.imageAlt}
                   detailTitle={props.detailTitle}
+                  detailTeamMembers={props.detailTeamMembers}
                   detailBody={props.detailBody}
                 />
               );
