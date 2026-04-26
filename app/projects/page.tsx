@@ -6,7 +6,6 @@ import {
   currentProjectsQuery,
   pastProjectsQuery,
 } from "../../sanity-cms/lib/queries";
-import "./projects.css";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import type { TypedObject } from "@portabletext/types";
 

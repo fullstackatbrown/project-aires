@@ -73,17 +73,6 @@ export default async function EBoardPage() {
             No e-board members yet.
           </p>
         )}
-
-        <div className="bg-[#08B2E3] text-white rounded-xl mt-20 py-16 px-10">
-          <h2 className="text-2xl mb-4">
-            Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;
-          </h2>
-
-          <p className="text-sm opacity-90">
-            Temporibus autem quibusdam et aut officiis debitis aut rerum
-            necessitatibus saepe eveniet.
-          </p>
-        </div>
       </div>
     </main>
   );

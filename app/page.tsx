@@ -97,7 +97,7 @@ export default async function Home() {
               <div className="md:w-1/2 py-[71.02px]">
                 <h1 className="text-[68px] font-medium mt-10 text-[#08B2E3] leading-none">Welcome to AIRES @ Brown</h1>
                 <h3 className="font-normal mt-5 text-gray-700">
-                  At the AI Robotics Ethics Society, we focus on educating tomorrow's AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
+                  At the AI Robotics Ethics Society, we focus on educating tomorrow&apos;s AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
                 </h3>
                 <div className="mt-6">
                   <Button text="Learn More" href="/about" filled={1} />
