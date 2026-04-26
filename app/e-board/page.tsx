@@ -38,7 +38,7 @@ export default async function EBoardPage() {
           {members.map((member) => (
             <div
               key={member._id}
-              className="flex h-full flex-col bg-white rounded-xl shadow-md border border-[#08B2E3] p-8 sm:p-10"
+              className="flex h-full flex-col bg-white rounded-xl border border-[#08B2E3] p-8 sm:p-10"
             >
               <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
                 <div className="shrink-0">
