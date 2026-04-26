@@ -4,7 +4,15 @@ import { authorType } from "./authorType";
 import { blockContentType } from "./blockContentType";
 import { eBoardType } from "./eBoardType";
 import { postType } from "./postType";
+import { currentProjectType, pastProjectType } from "./projectTypes";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [authorType, blockContentType, eBoardType, postType],
+  types: [
+    authorType,
+    blockContentType,
+    eBoardType,
+    postType,
+    currentProjectType,
+    pastProjectType,
+  ],
 };
