@@ -26,6 +26,7 @@ export type ProjectPopupProps = {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  teamMembers?: TypedObject[] | null;
   /** Portable Text from Sanity `blockContent` */
   body: TypedObject[] | null;
 };
@@ -38,11 +39,13 @@ export default function ProjectPopup({
   isOpen,
   onClose,
   title,
+  teamMembers,
   body,
 }: ProjectPopupProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const value = body ?? [];
+  const teamMembersValue = teamMembers ?? [];
 
   useEffect(() => {
     if (!isOpen) return;
@@ -79,12 +82,16 @@ export default function ProjectPopup({
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="mb-5 flex shrink-0 items-start justify-between gap-3">
-          <h2
-            id={titleId}
-            className="text-2xl font-medium text-black leading-tight pr-2"
-          >
-            {title}
-          </h2>
+          <div className="pr-2">
+            <h2 id={titleId} className="text-2xl font-medium text-black leading-tight">
+              {title}
+            </h2>
+            {teamMembersValue.length > 0 ? (
+              <div className="mt-3 text-base font-normal text-black/80 leading-snug [&_a]:text-[#08B2E3] [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-0 [&_ul]:list-disc [&_ul]:pl-6">
+                <PortableText value={teamMembersValue} components={portableComponents} />
+              </div>
+            ) : null}
+          </div>
           <button
             ref={closeRef}
             type="button"
