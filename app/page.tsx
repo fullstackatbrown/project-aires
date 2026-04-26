@@ -99,25 +99,19 @@ export default async function Home() {
             className="h-fill w-fill px-6 py-1 text-base"
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
-          {featuredProjects.length === 0 ? (
-            <p className="col-span-full text-sm text-gray-600">No current projects.</p>
-          ) : (
-            featuredProjects.map((doc) => {
-              const props = projectDocToCardProps(doc);
-              return (
-                <ProjectComp
-                  key={props.key}
-                  title={props.title}
-                  description={props.description}
-                  imageSrc={props.imageSrc}
-                  imageAlt={props.imageAlt}
-                  detailTitle={props.detailTitle}
-                  detailBody={props.detailBody}
-                />
-              );
-            })
-          )}
+        <div className="flex flex-row lg:flex-row items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
+          <ProjectComp
+            title="AI Safety Workshop"
+            description="Hands-on sessions exploring practical AI safety and ethics techniques."
+          />
+          <ProjectComp
+            title="Robotics for Social Good"
+            description="Student-led robotics projects focused on community impact and accessibility."
+          />
+          <ProjectComp
+            title="Policy & Governance Research"
+            description="Research on governance frameworks for responsible AI deployment."
+          />
         </div>
         <div className="py-25">
           <div className= "max-w-full h-fit bg-[#dbf0fd] py-20 px-17.5">
