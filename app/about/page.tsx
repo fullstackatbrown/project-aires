@@ -61,54 +61,9 @@ export default function AboutPage() {
         <h1 className="text-5xl md:text-6xl font-semibold text-[#08B2E3] text-center leading-tight mb-6">
           About AIRES
         </h1>
-      </section>
-
-      {/* ── WHAT IS AIRES ── */}
-      <section className="bg-[#dbf0fd] py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#000000] text-center mb-8">
-            What is the A.I. Robotics and Ethics Society?
-          </h2>
-          <p className="text-base md:text-lg text-gray-700 text-center leading-relaxed max-w-3xl mx-auto">
-            <strong>AIRES @ Brown</strong>, a branch of AIRES International, aims to raise
-            awareness and connect students to research opportunities with postgrad mentors
-            regarding AI ethics, uses, and implications. It also educates students on AI
-            advancements and dangers to prepare them for AI's impact on various industries
-            and their own lives.
-          </p>
-        </div>
-      </section>
-
-      {/* ── OUR STORY & GOALS ── */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-          {/* Story */}
-          <div className="rounded-2xl border-2 border-[#08B2E3] p-8 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-3 mb-4">
-              <h3 className="text-2xl font-bold text-[#000000]">Our Story</h3>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              AIRES at Brown is a collegiate chapter of the national AIRES organization.
-              We were founded in Spring 2019 to bring AI ethics discussion to Brown
-              University's campus. As a newer chapter, we are actively looking for new
-              members to join us!
-            </p>
-          </div>
-
-          {/* Goals */}
-          <div className="rounded-2xl border-2 border-[#08B2E3] p-8 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-3 mb-4">
-              <h3 className="text-2xl font-bold text-[#000000]">Our Goals</h3>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              Our main goal is to help students currently at Brown consider AI ethics before
-              they move into industry and make important decisions in the field. No matter
-              what area of study a Brown student pursues, AI will undoubtedly impact all
-              facets of society in the near future—and it's important that students learn
-              the possible implications of modern AI systems.
-            </p>
-          </div>
-        </div>
+        <p className="text-base font-normal text-black text-center max-w-3xl mx-aut px-16 mb-12">
+            At the AI Robotics Ethics Society, we focus on educating tomorrow's AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
+        </p>
       </section>
 
       {/* ── OUR MISSION ── */}
@@ -122,23 +77,56 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── OUR STORY & GOALS ── */}
+      <section className="py-20 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+          {/* Story */}
+          <div className="rounded-2xl border border-[#c8eaf7] bg-white p-6 hover:border-[#08B2E3] hover:shadow-md transform-gpu transition-all duration-200 hover:scale-[1.02] hover:bg-white">
+            <div className="flex items-center gap-3 mb-4">
+              <h3 className="text-2xl font-bold text-[#08B2E3]">Our Story</h3>
+            </div>
+            <p className="text-gray-600 leading-relaxed">
+              AIRES at Brown is a collegiate chapter of the national AIRES organization.
+              We were founded in Spring 2019 to bring AI ethics discussion to Brown
+              University's campus. As a newer chapter, we are actively looking for new
+              members to join us!
+            </p>
+          </div>
+
+          {/* Goals */}
+          <div className="rounded-2xl border border-[#c8eaf7] bg-white p-6 hover:border-[#08B2E3] hover:shadow-md transform-gpu transition-all duration-200 hover:scale-[1.02] hover:bg-white">
+            <div className="flex items-center gap-3 mb-4">
+              <h3 className="text-2xl font-bold text-[#08B2E3]">Our Goals</h3>
+            </div>
+            <p className="text-gray-600 leading-relaxed">
+              Our main goal is to help students currently at Brown consider AI ethics before
+              they move into industry and make important decisions in the field. No matter
+              what area of study a Brown student pursues, AI will undoubtedly impact all
+              facets of society in the near future—and it's important that students learn
+              the possible implications of modern AI systems.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── ACTIVITIES ── */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-[#08B2E3]">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#000000] text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
             What We Do
           </h2>
-          <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
-            AIRES @ Brown offers a variety of ways to get involved, learn, and grow.
+          <p className="text-white/90 text-center max-w-3xl mx-auto mb-12">
+          AIRES at Brown achieves its mission through student-led research, guest speakers, debates, and events that explore the ethical future of AI.
           </p>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {activities.map((a) => (
               <div
                 key={a.title}
-                className="rounded-2xl p-6 border border-[#c8eaf7] bg-[#f4fbff] hover:border-[#08B2E3] hover:shadow-md transition-all"
+                className="rounded-2xl border border-white border-2 bg-[#08B2E3] p-6 hover:border-white hover:shadow-md transform-gpu transition-all duration-200 hover:scale-[1.05]"
               >
-                <h4 className="text-lg font-bold text-[#000000] mb-2">{a.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
+                <h4 className="text-lg font-bold text-white mb-2">{a.title}</h4>
+                <p className="text-white text-sm leading-relaxed">{a.desc}</p>
               </div>
             ))}
           </div>
@@ -162,7 +150,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── DISCLAIMER ── */}
-      <section className="py-8 px-6 bg-gray-50 border-t border-gray-200">
+      <section className="py-8 px-6 bg-[#f0f9fe]">
         <div className="max-w-4xl mx-auto">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Disclaimer</p>
           <p className="text-xs text-gray-400 leading-relaxed">
@@ -175,4 +163,4 @@ export default function AboutPage() {
       </section>
     </main>
   );
-} 
+}
