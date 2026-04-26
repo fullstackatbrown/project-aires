@@ -14,6 +14,13 @@ interface SanityEBoardMember {
   headshot?: SanityImageSource & { alt?: string };
 }
 
+const E_BOARD_ABSTRACT = (
+  <>
+    Meet our dedicated executive board members who lead AIRES @ Brown with
+    passion and expertise.
+  </>
+);
+
 export default async function EBoardPage() {
   // Fetch all e-board members from Sanity CMS using the `eBoardMembersQuery` defined in `./sanity-cms/lib/queries.ts`.
   const members = await client.fetch<SanityEBoardMember[]>(eBoardMembersQuery);
@@ -25,43 +32,50 @@ export default async function EBoardPage() {
           Executive Board
         </h1>
 
-        <p className="text-gray-500 max-w-2xl mx-auto">
-          Temporibus autem quibusdam et aut officiis debitis aut rerum
-          necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-          molestiae non recusandae.
-        </p>
+        <p className="text-gray-500 max-w-2xl mx-auto">{E_BOARD_ABSTRACT}</p>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-16">
+        <div className="grid items-start gap-10 mt-16 md:grid-cols-2">
           {members.map((member) => (
             <div
               key={member._id}
-              className="bg-white rounded-xl shadow-md border border-gray-200 p-10"
+              className="flex h-full flex-col bg-white rounded-xl shadow-md border border-[#08B2E3] p-8 sm:p-10"
             >
-              {member.headshot ? (
-                <Image
-                  src={urlFor(member.headshot)
-                    .width(96)
-                    .height(96)
-                    .fit("crop")
-                    .auto("format")
-                    .url()}
-                  alt={member.headshot.alt ?? member.name}
-                  width={96}
-                  height={96}
-                  className="w-24 h-24 object-cover rounded-md mx-auto"
-                />
-              ) : (
-                <div className="w-24 h-24 rounded-md bg-gray-100 mx-auto" />
-              )}
+              <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
+                <div className="shrink-0">
+                  {member.headshot ? (
+                    <Image
+                      src={urlFor(member.headshot)
+                        .width(144)
+                        .height(144)
+                        .fit("crop")
+                        .auto("format")
+                        .url()}
+                      alt={member.headshot.alt ?? member.name}
+                      width={144}
+                      height={144}
+                      className="h-36 w-36 rounded-md object-cover"
+                    />
+                  ) : (
+                    <div className="h-36 w-36 rounded-md bg-gray-100" />
+                  )}
+                </div>
 
-              <h2 className="text-xl mt-6 text-black">{member.name}</h2>
-              <p className="text-[#08B2E3] text-sm mt-1">
-                {member.roleAtAIRES}
-              </p>
+                <div className="flex-1">
+                  <h2 className="text-xl text-black">{member.name}</h2>
+                  <p className="mt-1 text-sm text-[#08B2E3]">
+                    {member.roleAtAIRES}
+                  </p>
 
-              <div className="w-10 h-0.5 bg-gray-200 mx-auto my-5" />
+                  <div className="mt-4 space-y-1 text-sm text-gray-600">
+                    <p>Class {member.year}</p>
+                    <p>Concentration: {member.concentration}</p>
+                  </div>
 
-              <p className="text-gray-500 text-sm leading-relaxed">
+                  <div className="my-5 h-0.5 w-10 sm:mx-0 mx-auto" />
+                </div>
+              </div>
+
+              <p className="mt-1 text-sm leading-relaxed text-gray-500">
                 {member.shortBio ?? ""}
               </p>
             </div>
