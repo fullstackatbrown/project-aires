@@ -14,6 +14,13 @@ interface SanityEBoardMember {
   headshot?: SanityImageSource & { alt?: string };
 }
 
+const E_BOARD_ABSTRACT = (
+  <>
+    Meet our dedicated executive board members who lead AIRES @ Brown with
+    passion and expertise.
+  </>
+);
+
 export default async function EBoardPage() {
   // Fetch all e-board members from Sanity CMS using the `eBoardMembersQuery` defined in `./sanity-cms/lib/queries.ts`.
   const members = await client.fetch<SanityEBoardMember[]>(eBoardMembersQuery);
@@ -25,11 +32,7 @@ export default async function EBoardPage() {
           Executive Board
         </h1>
 
-        <p className="text-gray-500 max-w-2xl mx-auto">
-          Temporibus autem quibusdam et aut officiis debitis aut rerum
-          necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-          molestiae non recusandae.
-        </p>
+        <p className="text-gray-500 max-w-2xl mx-auto">{E_BOARD_ABSTRACT}</p>
 
         <div className="grid items-start gap-10 mt-16 md:grid-cols-2">
           {members.map((member) => (
