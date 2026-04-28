@@ -1,23 +1,42 @@
 "use client";
 
+import type { TypedObject } from "@portabletext/types";
 import { useState } from "react";
+import ProjectPopup from "./ProjectPopup";
 import ReadMore from "./ReadMore";
 
 const DEFAULT_IMAGES = ["/PBlog.png", "/BrownCarney.png", "/team-picture.png"];
 const DEFAULT_ALTS = ["Project thumbnail", "Project thumbnail", "Project thumbnail"];
+
+const readMoreLinkClass =
+  "inline-flex items-center font-semibold text-[#08B2E3] hover:cursor-pointer hover:underline whitespace-nowrap transition";
 
 export default function ProjectComp({
   title,
   description,
   imageSrc = DEFAULT_IMAGES,
   imageAlt = DEFAULT_ALTS,
+  detailTitle,
+  detailTeamMembers,
+  detailBody,
+  readMoreHref = "/projects",
 }: {
   title: string;
   description: string;
   imageSrc?: string[];
   imageAlt?: string[];
+  /** Shown in the popup title; defaults to `title` when using the modal. */
+  detailTitle?: string;
+  /** Shown under the popup title when provided. */
+  detailTeamMembers?: TypedObject[] | null;
+  /** When non-empty, “Read more” opens the popup instead of navigating. */
+  detailBody?: TypedObject[] | null;
+  readMoreHref?: string;
 }) {
+  const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const hasProjectPopup = Array.isArray(detailBody) && detailBody.length > 0;
+  const modalHeading = detailTitle?.trim() || title;
   const sources = imageSrc.length > 0 ? imageSrc : DEFAULT_IMAGES;
   const alts = imageAlt.length > 0 ? imageAlt : DEFAULT_ALTS;
   const index = ((currentIndex % sources.length) + sources.length) % sources.length;
@@ -58,7 +77,26 @@ export default function ProjectComp({
       <div className="mt-[22.5px] pl-5 flex flex-col gap-3">
         <h2 className="text-xl font-medium text-black leading-tight">{title}</h2>
         <p className="text-[13.34px] text-black">{description}</p>
-        <ReadMore href="/projects" className="mt-2" />
+        {hasProjectPopup ? (
+          <>
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className={`${readMoreLinkClass} mt-2 text-left`}
+            >
+              <span>Read More&nbsp;⟶</span>
+            </button>
+            <ProjectPopup
+              isOpen={modalOpen}
+              onClose={() => setModalOpen(false)}
+              title={modalHeading}
+              teamMembers={detailTeamMembers}
+              body={detailBody ?? null}
+            />
+          </>
+        ) : (
+          <ReadMore href={readMoreHref} className="mt-2" />
+        )}
       </div>
     </div>
   );

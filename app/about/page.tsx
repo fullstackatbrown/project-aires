@@ -80,7 +80,7 @@ export default function AboutPage() {
             <strong>AIRES @ Brown</strong>, a branch of AIRES International, aims to raise
             awareness and connect students to research opportunities with postgrad mentors
             regarding AI ethics, uses, and implications. It also educates students on AI
-            advancements and dangers to prepare them for AI's impact on various industries
+            advancements and dangers to prepare them for AI&apos;s impact on various industries
             and their own lives.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed">
               AIRES at Brown is a collegiate chapter of the national AIRES organization.
               We were founded in Spring 2019 to bring AI ethics discussion to Brown
-              University's campus. As a newer chapter, we are actively looking for new
+              University&apos;s campus. As a newer chapter, we are actively looking for new
               members to join us!
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
               Our main goal is to help students currently at Brown consider AI ethics before
               they move into industry and make important decisions in the field. No matter
               what area of study a Brown student pursues, AI will undoubtedly impact all
-              facets of society in the near future—and it's important that students learn
+              facets of society in the near future—and it&apos;s important that students learn
               the possible implications of modern AI systems.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
           <p className="text-lg md:text-xl leading-relaxed opacity-90">
-            AIRES at Brown aims to educate tomorrow's leaders on the uses, advancements, and dangers of artificial intelligence to ensure AI is created ethically and responsibly. AIRES at Brown achieves its mission through student-led research, as well as hosting guest speakers, socials, and other events.
+            AIRES at Brown aims to educate tomorrow&apos;s leaders on the uses, advancements, and dangers of artificial intelligence to ensure AI is created ethically and responsibly. AIRES at Brown achieves its mission through student-led research, as well as hosting guest speakers, socials, and other events.
 
           </p>
         </div>

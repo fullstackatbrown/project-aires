@@ -4,10 +4,12 @@ import BlogComp from "./components/BlogComp"; // added
 import ProjectComp from "./components/ProjectComp";
 import EventsComp from "./components/EventsComp";
 import Image from "next/image";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity-cms/lib/client";
 import { urlFor } from "@/sanity-cms/lib/image";
-import { postsQuery } from "@/sanity-cms/lib/queries";
+import { currentProjectsQuery, postsQuery } from "@/sanity-cms/lib/queries";
+import { fetchNextIcsEvents } from "./lib/googleCalendarIcs";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { TypedObject } from "@portabletext/types";
 
 interface HomeBlogPost {
   _id: string;
@@ -20,6 +22,50 @@ interface HomeBlogPost {
   abstract?: string;
 }
 
+type ProjectDoc = {
+  _id: string;
+  title: string | null;
+  summary: string | null;
+  fullDescription: TypedObject[] | null;
+  images: SanityImageSource[] | null;
+};
+
+function imageAltFrom(item: SanityImageSource): string {
+  if (
+    typeof item === "object" &&
+    item !== null &&
+    "alt" in item &&
+    typeof (item as { alt?: string }).alt === "string" &&
+    (item as { alt: string }).alt.trim() !== ""
+  ) {
+    return (item as { alt: string }).alt;
+  }
+  return "Project image";
+}
+
+function projectDocToCardProps(doc: ProjectDoc) {
+  const list = doc.images?.filter(Boolean) ?? [];
+  const imageSrc =
+    list.length > 0
+      ? list.map((img) => urlFor(img).width(800).height(800).fit("crop").url())
+      : ["/PBlog.png"];
+  const imageAlt =
+    list.length > 0 ? list.map((img) => imageAltFrom(img)) : ["Project image"];
+
+  const fullDesc = doc.fullDescription;
+  const hasPortableBody = Array.isArray(fullDesc) && fullDesc.length > 0;
+
+  return {
+    key: doc._id,
+    title: doc.title?.trim() || "Untitled project",
+    description: doc.summary?.trim() || "",
+    imageSrc,
+    imageAlt,
+    detailTitle: doc.title?.trim() || "Untitled project",
+    detailBody: hasPortableBody ? fullDesc : null,
+  };
+}
+
 function formatBlogDate(publishedAt?: string) {
   if (!publishedAt) return "";
 
@@ -30,31 +76,17 @@ function formatBlogDate(publishedAt?: string) {
   });
 }
 
-const upcomingEvents = [
-  {
-    title: "AI Ethics Panel",
-    date: "Apr 18, 2026",
-    time: "6:30 PM",
-    location: "Salomon 101",
-  },
-  {
-    title: "Responsible Robotics Workshop",
-    date: "Apr 25, 2026",
-    time: "4:00 PM",
-    location: "Engineering Lab 2",
-  },
-  {
-    title: "AI Policy Roundtable",
-    date: "May 2, 2026",
-    time: "5:30 PM",
-    location: "Joukowsky Forum",
-  },
-];
+const upcomingEvents = await fetchNextIcsEvents(3);
 
 export default async function Home() {
-  const allPosts = await client.fetch<HomeBlogPost[]>(postsQuery);
+  const [allPosts, currentProjects] = await Promise.all([
+    client.fetch<HomeBlogPost[]>(postsQuery),
+    client.fetch<ProjectDoc[]>(currentProjectsQuery),
+  ]);
+
   const [latestPost, ...otherPosts] = allPosts;
   const nextThreePosts = otherPosts.slice(0, 3);
+  const featuredProjects = currentProjects.slice(0, 3);
 
   return (
     <>
@@ -65,7 +97,7 @@ export default async function Home() {
               <div className="md:w-1/2 py-[71.02px]">
                 <h1 className="text-[68px] font-medium mt-10 text-[#08B2E3] leading-none">Welcome to AIRES @ Brown</h1>
                 <h3 className="font-normal mt-5 text-gray-700">
-                  At the AI Robotics Ethics Society, we focus on educating tomorrow's AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
+                  At the AI Robotics Ethics Society, we focus on educating tomorrow&apos;s AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
                 </h3>
                 <div className="mt-6">
                   <Button text="Learn More" href="/about" filled={1} />
@@ -117,19 +149,25 @@ export default async function Home() {
             className="h-fill w-fill px-6 py-1 text-base"
           />
         </div>
-        <div className="flex flex-row lg:flex-row items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
-          <ProjectComp
-            title="AI Safety Workshop"
-            description="Hands-on sessions exploring practical AI safety and ethics techniques."
-          />
-          <ProjectComp
-            title="Robotics for Social Good"
-            description="Student-led robotics projects focused on community impact and accessibility."
-          />
-          <ProjectComp
-            title="Policy & Governance Research"
-            description="Research on governance frameworks for responsible AI deployment."
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
+          {featuredProjects.length === 0 ? (
+            <p className="col-span-full text-sm text-gray-600">No current projects.</p>
+          ) : (
+            featuredProjects.map((doc) => {
+              const props = projectDocToCardProps(doc);
+              return (
+                <ProjectComp
+                  key={props.key}
+                  title={props.title}
+                  description={props.description}
+                  imageSrc={props.imageSrc}
+                  imageAlt={props.imageAlt}
+                  detailTitle={props.detailTitle}
+                  detailBody={props.detailBody}
+                />
+              );
+            })
+          )}
         </div>
         <div className="py-25">
           <div className= "max-w-full h-fit bg-[#dbf0fd] py-20 px-17.5">
@@ -219,7 +257,7 @@ export default async function Home() {
        </section>
 
 
-        <EventsComp />
+        <EventsComp events={upcomingEvents} />
         <div className="h-8" />
       </main>
     </>
