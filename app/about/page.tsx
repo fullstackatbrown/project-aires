@@ -130,29 +130,26 @@ export default function AboutPage() {
       </section>
 
       {/* ── ACTIVITIES ── */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#000000] text-center mb-4">
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-black text-center mb-14">
             What We Do
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          {activities.map((a, index) => (
-            <div
-              key={a.title}
-              className={`rounded-2xl p-6 border border-[#c8eaf7] bg-[#f4fbff] hover:border-[#08B2E3] hover:shadow-md transition-all
-                ${
-                  index < 3
-                    ? "md:col-span-2"
-                    : index === 3
-                    ? "md:col-start-2 md:col-span-2"
-                    : "md:col-start-4 md:col-span-2"
-                }`}
-            >
-              <h4 className="text-lg font-bold text-[#000000] mb-2">{a.title}</h4>
-              <p className="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
-            </div>
-          ))}
-        </div>
+          <div className="space-y-8">
+            {activities.map((a) => (
+              <div
+                key={a.title}
+                className="pl-6 border-l-4 border-[#08B2E3]"
+              >
+                <h4 className="text-xl font-semibold text-black mb-2">
+                  {a.title}
+                </h4>
+                <p className="text-gray-600 leading-relaxed max-w-2xl">
+                  {a.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
