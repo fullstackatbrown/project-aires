@@ -51,7 +51,7 @@ const BLOG_ABSTRACT = (
       this link
     </a>{" "}
     to read the blog posts, which are hosted on Substack. The latest posts are
-    also featured on this page. Click the &quot;Read more&quot; link on each
+    also expressed on this page. Click the &quot;Read more&quot; link on each
     post to read the full content on Substack.
   </>
 );
