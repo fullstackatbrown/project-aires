@@ -26,13 +26,13 @@ export default async function EBoardPage() {
   const members = await client.fetch<SanityEBoardMember[]>(eBoardMembersQuery);
 
   return (
-    <main className="min-h-screen bg-white py-20 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <h1 className="text-4xl font-semibold text-[#08B2E3] mb-4">
+    <main className="min-h-screen bg-white py-20">
+      <div className="page-container text-center">
+        <h1 className="page-title mb-4">
           Executive Board
         </h1>
 
-        <p className="text-gray-500 max-w-2xl mx-auto">{E_BOARD_ABSTRACT}</p>
+        <p className="text-gray-500 w-full mx-auto">{E_BOARD_ABSTRACT}</p>
 
         <div className="grid items-start gap-10 mt-16 md:grid-cols-2">
           {members.map((member) => (

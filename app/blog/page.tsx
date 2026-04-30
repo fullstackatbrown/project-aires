@@ -95,8 +95,8 @@ export default async function BlogPage({
   return (
     <main className="flex min-h-screen flex-col bg-white">
       {/* Blog header. */}
-      <section className="mx-auto max-w-6xl px-4 pt-10 pb-8 text-center">
-        <h1 className="text-4xl font-semibold text-[#1CB2DF] md:text-5xl">
+      <section className="page-container pt-10 pb-8 text-center">
+        <h1 className="page-title">
           Blog
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-500">
@@ -105,7 +105,7 @@ export default async function BlogPage({
       </section>
 
       {/* Blog content(s). */}
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 md:flex-row md:gap-12">
+      <div className="page-container flex flex-col gap-8 pb-16 md:flex-row md:gap-12">
         <div className="min-w-0 flex-1 md:order-1">
           <ul className="space-y-10">
             {/* List of "normal" posts for the current page. */}

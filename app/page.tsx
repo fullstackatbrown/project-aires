@@ -92,7 +92,7 @@ export default async function Home() {
     <>
       <main className = "bg-white h-auto w-full ">
         <header className="text-black">
-          <div className="container mx-auto px-4 md:px-10 lg:px-46.25 py-25">
+          <div className="page-container py-25">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-17.5">
               <div className="md:w-1/2 py-[71.02px]">
                 <h1 className="text-[68px] font-medium mt-10 text-[#08B2E3] leading-none">Welcome to AIRES @ Brown</h1>
@@ -120,12 +120,13 @@ export default async function Home() {
           </div>
         </header>
       <div className="pb-25">
-          <div className="max-w-full mx-auto bg-[#08B2E3] text-white font-medium p-10 px-17.5  mt-10 flex flex-col md:flex-row items-center gap-31.25">
+          <div className="bg-[#08B2E3] text-white font-medium mt-10">
+            <div className="page-container flex flex-col md:flex-row items-center gap-31.25 py-10">
             <div className="md:flex-1">
-              <h3 className="text-center text-[24px] px-28.25 mb-0">
+              <h3 className="text-center md:text-left text-[24px] mb-0 w-full max-w-none">
                 The AI Robotics Ethics Society was founded in 2018 at UCLA by Aaron Hui as a 501(c)(3) nonprofit organization to promote awareness of and the importance of ethical implementation and regulation of AI.
               </h3>
-              <div className="flex justify-center mt-6">
+              <div className="mt-6 flex justify-center md:justify-start">
                 <Button text="National Aires Website" href="https://www.theaires.org/" target="_blank" filled={3} />
               </div>
             </div>
@@ -136,10 +137,11 @@ export default async function Home() {
               width={384}
               height={384}
             />
+            </div>
           </div>
         </div>
 
-        <div className="flex items-center px-17.5 gap-4">
+        <div className="page-container flex items-center gap-4">
           <span className="text-[40px] font-semibold text-[#08B2E3]">Projects</span>
           <hr className="border-black flex-1" />
           <Button
@@ -149,7 +151,7 @@ export default async function Home() {
             className="h-fill w-fill px-6 py-1 text-base"
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start px-[113.14px] py-[26.63px] gap-10 mt-10">
+        <div className="page-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start py-[26.63px] gap-10 mt-10">
           {featuredProjects.length === 0 ? (
             <p className="col-span-full text-sm text-gray-600">No current projects.</p>
           ) : (
@@ -170,8 +172,8 @@ export default async function Home() {
           )}
         </div>
         <div className="py-25">
-          <div className= "max-w-full h-fit bg-[#dbf0fd] py-20 px-17.5">
-              <div className="flex flex-col md:flex-row items-center gap-20 px-37.5 mt-10">
+          <div className= "bg-[#dbf0fd] py-20">
+              <div className="page-container flex flex-col md:flex-row items-center gap-20 mt-10">
                 <div className="flex justify-center rounded-lg border-4 border-white">
                   <img src="/aires_clubfair.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
                 </div>
@@ -188,7 +190,7 @@ export default async function Home() {
           </div>
         </div>
 
-      <section className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32 pb-14 lg:pb-20">
+      <section className="page-container pb-14 lg:pb-20">
        <div className="flex items-center w-full gap-4 pb-8 lg:pb-12">
          <span className="text-[32px] md:text-[40px] font-semibold text-[#08B2E3] whitespace-nowrap">Blog</span>
          <hr className="border-black flex-1" />

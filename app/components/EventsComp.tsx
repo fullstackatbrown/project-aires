@@ -57,7 +57,7 @@ export default function EventsComp({
 
   return (
     <section className="w-full mt-10 pb-16 md:pb-20">
-      <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-32">
+      <div className="page-container">
         <div className="relative bg-white text-black rounded-xl border border-gray-400 px-6 md:px-10 lg:px-12 pt-10 pb-16 md:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 lg:gap-10 items-start pb-6">
             <div>

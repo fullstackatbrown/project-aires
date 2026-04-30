@@ -71,23 +71,20 @@ export default async function ProjectsPage() {
 
   return (
     <main className={`${montserrat.className} bg-[#FFFFFF]`}>
-      <div className="flex flex-col items-center justify-start min-h-screen py-0.5 px-4 pt-8 pb-15">
-        <h1 className="text-4xl text-spacing font-bold text-[#08B2E3]">
+      <div className="page-container flex flex-col items-center justify-start min-h-screen py-0.5 pt-8 pb-15">
+        <h1 className="page-title">
           Our Projects
         </h1>
-        <p className="w-full max-w-3xl text-center text-gray-700 text-[17px] font-light leading-[30.88px] break-words">
-          Temporibus autem quibusdam et aut officiis debitis aut rerum
-          necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-          molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-          delectus, ut aut reiciendis
+        <p className="w-full max-w-3xl text-center text-gray-700 text-base leading-relaxed mt-6 mb-10">
+          Explore our student-led projects focusing on AI ethics, research, and real-world applications. Each project includes detailed descriptions, team members, and visuals to showcase our work.
         </p>
-        <div className="w-full mt-10 flex items-center px-4 md:px-17.5 gap-4">
+        <div className="w-full flex items-center gap-4">
           <span className="text-[25px] font-semibold text-[#08B2E3]">
             Current Projects
           </span>
           <hr className="flex-1 border-[1.2px] border-[#08B2E3] mt-2 self-end" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-4 md:px-[113.14px] py-[26.63px] gap-10 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full py-[26.63px] gap-10 mt-5">
           {currentProjects.length === 0 ? (
             <p className="col-span-full text-center text-gray-600 text-sm">
               No current projects.
@@ -110,13 +107,13 @@ export default async function ProjectsPage() {
             })
           )}
         </div>
-        <div className="w-full mt-10 flex items-center px-4 md:px-17.5 gap-4">
+        <div className="w-full mt-10 flex items-center gap-4">
           <span className="text-[25px] font-semibold text-[#08B2E3]">
             Past Projects
           </span>
           <hr className="flex-1 border-[1.2px] border-[#08B2E3] mt-2 self-end" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-4 md:px-[113.14px] py-[26.63px] gap-10 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full py-[26.63px] gap-10 mt-5">
           {pastProjects.length === 0 ? (
             <p className="col-span-full text-center text-gray-600 text-sm">
               No past projects.

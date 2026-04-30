@@ -42,7 +42,7 @@ export default function AboutPage() {
       className={`${montserrat.variable} font-sans bg-white text-gray-800 overflow-x-hidden`}
     >
       {/* ── HERO ── */}
-      <section className="relative flex flex-col items-center justify-center pt-24 pb-20 px-6 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center pt-24 pb-20 overflow-hidden">
         {/* Background blob */}
         
         <div
@@ -51,24 +51,26 @@ export default function AboutPage() {
           style={{ background: "radial-gradient(circle, #08B2E3, transparent)" }}
         />
 
-        <Image
-          src={logo}
-          alt="AIRES Logo"
-          width={110}
-          height={110}
-          className="mb-6 drop-shadow-lg"
-        />
-        <h1 className="text-5xl md:text-6xl font-semibold text-[#08B2E3] text-center leading-tight mb-6">
-          About AIRES
-        </h1>
-        <p className="text-base font-normal text-black text-center max-w-3xl mx-aut px-16 mb-12">
-            At the AI Robotics Ethics Society, we focus on educating tomorrow's AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
-        </p>
+        <div className="page-container flex flex-col items-center">
+          <Image
+            src={logo}
+            alt="AIRES Logo"
+            width={110}
+            height={110}
+            className="mb-6 drop-shadow-lg"
+          />
+          <h1 className="page-title text-center mb-6">
+            About AIRES
+          </h1>
+          <p className="text-base font-normal text-black text-center w-full mb-12">
+              At the AI Robotics Ethics Society, we focus on educating tomorrow's AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
+          </p>
+        </div>
       </section>
 
       {/* ── OUR MISSION ── */}
-      <section className="bg-[#08B2E3] py-20 px-6 text-white">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="bg-[#08B2E3] py-20 text-white">
+        <div className="page-container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
           <p className="text-lg md:text-xl leading-relaxed opacity-90">
             AIRES at Brown aims to educate tomorrow's leaders on the uses, advancements, and dangers of artificial intelligence to ensure AI is created ethically and responsibly. AIRES at Brown achieves its mission through student-led research, as well as hosting guest speakers, socials, and other events.
@@ -78,8 +80,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── OUR STORY & GOALS ── */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+      <section className="py-20">
+        <div className="page-container grid md:grid-cols-2 gap-8">
           {/* Story */}
           <div className="rounded-2xl border border-[#c8eaf7] bg-white p-6 hover:border-[#08B2E3] hover:shadow-md transform-gpu transition-all duration-200 hover:scale-[1.02] hover:bg-white">
             <div className="flex items-center gap-3 mb-4">
@@ -110,8 +112,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── ACTIVITIES ── */}
-      <section className="py-20 px-6 bg-[#08B2E3]">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-20 bg-[#08B2E3]">
+        <div className="page-container">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
             What We Do
           </h2>
@@ -123,7 +125,7 @@ export default function AboutPage() {
             {activities.map((a) => (
               <div
                 key={a.title}
-                className="rounded-2xl border border-white border-2 bg-[#08B2E3] p-6 hover:border-white hover:shadow-md transform-gpu transition-all duration-200 hover:scale-[1.05]"
+                className="rounded-2xl border-2 border-white bg-[#08B2E3] p-6 hover:border-white hover:shadow-md transform-gpu transition-all duration-200 hover:scale-[1.05]"
               >
                 <h4 className="text-lg font-bold text-white mb-2">{a.title}</h4>
                 <p className="text-white text-sm leading-relaxed">{a.desc}</p>
@@ -134,7 +136,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 px-6 bg-[#f0f9fe] text-center">
+      <section className="py-20 bg-white text-center">
+        <div className="page-container">
         <h2 className="text-3xl md:text-4xl font-bold text-[#000000] mb-4">
           Join AIRES @ Brown
         </h2>
@@ -147,18 +150,6 @@ export default function AboutPage() {
         >
           Join our Slack →
         </a>
-      </section>
-
-      {/* ── DISCLAIMER ── */}
-      <section className="py-8 px-6 bg-[#f0f9fe]">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Disclaimer</p>
-          <p className="text-xs text-gray-400 leading-relaxed">
-            The content of UCS/GSC recognized student organization websites is generated independently from Brown
-            University. The statements, views, opinions, and information contained on the site are personal to those
-            of the authors and student organization and do not necessarily reflect those of Brown University. The
-            content on the site is not reviewed, approved, or endorsed by Brown University or its faculty or staff.
-          </p>
         </div>
       </section>
     </main>

@@ -32,7 +32,7 @@ export default function Navbar() {
     return (
         // Sticky top bar so navigation remains visible while scrolling
         <header className="sticky top-0 z-50 border-b border-[#d7ecf4] bg-white">
-            <nav className="bg-[#FFFFFF] mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-6" aria-label="Main navigation">
+            <nav className="page-container flex items-center justify-between py-3" aria-label="Main navigation">
                 {/* logo + site title; clicking collapses mobile menu. */}
                 <Link href="/" className="group flex items-center gap-3" onClick={() => setIsOpen(false)}>
                     <Image src="/aires_logo.avif" width={52} height={52} alt="AIRES Logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-[#08B2E3]/25" />
@@ -61,9 +61,9 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                                className={`rounded-md px-4 py-2 text-sm font-semibold transition ${
                                     active
-                                        ? "bg-[#08B2E3] text-white shadow-sm"
+                                        ? "border-2 border-[#08B2E3] text-[#08B2E3]"
                                         : "text-[#000000] hover:text-[#0f235d]"
                                 }`}
                             >
@@ -76,17 +76,17 @@ export default function Navbar() {
 
             {/* Mobile dropdown navigation; rendered only when menu is open. */}
             {isOpen && (
-                <div id="mobile-menu" className="border-t border-[#d7ecf4] bg-[#FFFFFF] px-4 py-3 md:hidden">
-                    <div className="mx-auto flex max-w-6xl flex-col gap-1">
+                <div id="mobile-menu" className="border-t border-[#d7ecf4] bg-[#FFFFFF] md:hidden">
+                    <div className="page-container flex flex-col gap-1 py-3">
                         {NAV_LINKS.map((link) => {
                             const active = isActive(link.href);
                             return (
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                                    className={`rounded-md px-3 py-2 text-sm font-semibold transition ${
                                         active
-                                            ? "bg-[#08B2E3] text-white"
+                                            ? "border-2 border-[#08B2E3] text-[#08B2E3]"
                                             : "text-[#000000] hover:bg-[#e6f6fb]"
                                     }`}
                                     // Close the menu after navigating on mobile.

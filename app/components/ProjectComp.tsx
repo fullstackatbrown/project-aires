@@ -49,7 +49,7 @@ export default function ProjectComp({
   };
 
   return (
-    <div className="flex flex-col py-8 px-3 mb-4 w-full min-w-0 max-w-[439.11px] border border-[#08B2E3] rounded-xl">
+    <div className="flex flex-col h-full py-8 px-3 mb-4 w-full min-w-0 max-w-[439.11px] border border-[#08B2E3] rounded-xl">
       <div className="flex flex-row items-center gap-1 w-full">
         <button
           type="button"
@@ -75,8 +75,8 @@ export default function ProjectComp({
       </div>
 
       <div className="mt-[22.5px] pl-5 flex flex-col gap-3">
-        <h2 className="text-xl font-medium text-black leading-tight">{title}</h2>
-        <p className="text-[13.34px] text-black">{description}</p>
+        <h2 className="text-xl font-medium text-black leading-tight clamp-2">{title}</h2>
+        <p className="text-[13.34px] text-black clamp-3">{description}</p>
         {hasProjectPopup ? (
           <>
             <button

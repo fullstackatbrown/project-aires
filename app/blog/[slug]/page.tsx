@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      <article className="mx-auto w-full max-w-3xl px-4 py-10 pb-16">
+      <article className="page-container py-10 pb-16">
         <Link
           href="/blog"
           className="text-sm font-medium text-[#1CB2DF] hover:underline"
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             {post.author ?? "Unknown"}
             {dateLabel ? ` | ${dateLabel}` : ""}
           </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral-800 md:text-4xl">
+          <h1 className="page-title mt-2">
             {post.title}
           </h1>
           {post.abstract ? (

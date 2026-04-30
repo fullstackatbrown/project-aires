@@ -25,40 +25,53 @@ export default function Footer() {
     */
 
     return(
-        <div className="flex flex-col bg-[#08B2E3]">
-            <div className="flex flex-row justify-between w-screen px-18 pt-10 pb-5">
+        <footer className="bg-[#08B2E3] text-white">
+            <div className="page-container py-12 lg:py-14">
+                <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="flex items-center gap-4 lg:max-w-md">
+                        <Image 
+                            src="/aires_logo.avif"
+                            width={132}
+                            height={132}
+                            alt="AIRES Logo"
+                            className="h-20 w-20 shrink-0 rounded-full object-cover ring-2 ring-white/25 sm:h-24 sm:w-24"
+                        />
+                        <div className="min-w-0">
+                            <h1 className="text-2xl font-semibold leading-tight text-white sm:text-3xl">
+                                AIRES @ Brown
+                            </h1>
+                            <p className="mt-2 text-base leading-relaxed text-white/90 sm:text-lg">
+                                Creating AI Ethically and Responsibly.
+                            </p>
+                        </div>
+                    </div>
 
-                <div className="flex flex-row w-1/2 px-4">
-                    <Image 
-                        src = "/aires_logo.avif"
-                        width={220}
-                        height={220}
-                        alt = "AIRES Logo"
-                    />
-                    <h1 className="pl-4 flex items-center h-full text-2xl text font-semibold">Creating AI Ethically and Responsibly.</h1>
+                    <div className="grid gap-8 sm:grid-cols-2 lg:gap-12">
+                        <div className="flex flex-col gap-2">
+                            <h2 className="text-xl font-semibold text-white">Key Links</h2>
+                            <Link className="text-lg font-medium text-white/90 transition hover:text-white" href="/about">About Us</Link>
+                            <Link className="text-lg font-medium text-white/90 transition hover:text-white" href="/blog">Our Blog</Link>
+                            <Link className="text-lg font-medium text-white/90 transition hover:text-white" href="/projects">Projects</Link>
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <h2 className="text-xl font-semibold text-white">Social Media</h2>
+                            <a className="text-lg font-medium text-white/90 transition hover:text-white" href="https://www.instagram.com/brownu_aires/" target="_blank" rel="noreferrer">Instagram</a>
+                            <a className="text-lg font-medium text-white/90 transition hover:text-white" href="mailto:aires@brown.edu?subject=Let%27s%20Get%20In%20Touch%21">Email</a>
+                            <a className="text-lg font-medium text-white/90 transition hover:text-white" href="https://airesatbrown.substack.com/p/airesbrown-january-2026-newsletter" target="_blank" rel="noreferrer">Substack</a>
+                        </div>
+                    </div>
                 </div>
-                
-                <div className="flex flex-row">
-                    <div className = "flex flex-col mr-8">
-                        <h1 className="font-semibold text-2xl">Key Links</h1>
-                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/about">About Us</Link>
-                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/blog">Our Blog</Link>
-                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/e-board">Meet Our Team</Link>
-                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/events">Events</Link>
-                        <Link className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="/projects">Projects</Link>
-                    </div>
 
-                    <div className = "flex flex-col ml-4">
-                        <h1 className="font-semibold text-2xl mr-18">Social Media</h1>
-                        <a className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="https://www.instagram.com/brownu_aires/" target="_blank">Instagram</a>
-                        <a className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="mailto:aires@brown.edu?subject=Let%27s%20Get%20In%20Touch%21">Email</a>
-                        <a className = "transition-all text-lg my-1 font-semibold hover:text-amber-300" href="https://airesatbrown.substack.com/p/airesbrown-january-2026-newsletter">Substack</a>
-                    </div>
+                <div className="mt-10 border-t border-white/25 pt-4 text-sm leading-relaxed text-white/90">
+                    <p>
+                        The content of UCS/GSC recognized student organization websites is generated independently from Brown University. The statements, views, opinions, and information contained on the site are personal to those of the authors and student organization and do not necessarily reflect those of Brown University. The content on the site is not reviewed, approved, or endorsed by Brown University or its faculty or staff.
+                    </p>
+                    <p className="mt-2 text-white/80">
+                        AIRES @ Brown. All Rights Reserved.
+                    </p>
                 </div>
             </div>
-            <p className="font-light px-34 mb-5 text-right">
-                AIRES @ Brown. All Rights Reserved.
-            </p>
-        </div>
+        </footer>
     )
 }
