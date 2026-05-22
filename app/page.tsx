@@ -107,7 +107,7 @@ export default async function Home() {
               <div className="md:w-1/2 flex justify-center md:justify-end">
                 <div className="">
                   <Image
-                    src="/team.png"
+                    src="/nextjs-github-pages/team.png"
                     alt="AIRES team"
                     className=""
                     width={670}
@@ -131,7 +131,7 @@ export default async function Home() {
               </div>
             </div>
             <Image
-              src="/aires-logo.png"
+              src="/nextjs-github-pages/aires-logo.png"
               alt="AIRES Large Logo"
               className="w-48 h-48 md:w-96 md:h-96 object-contain mx-auto rounded-full"
               width={384}
