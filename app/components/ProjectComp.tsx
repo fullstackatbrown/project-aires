@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { TypedObject } from "@portabletext/types";
 import { useState } from "react";
 import ProjectPopup from "./ProjectPopup";
@@ -59,9 +60,11 @@ export default function ProjectComp({
         >
           <span className="text-4xl leading-none">‹</span>
         </button>
-        <img
+        <Image
           src={sources[index]}
           alt={alts[index] ?? alts[0] ?? "Project thumbnail"}
+          width={439}
+          height={439}
           className="flex-1 min-w-0 w-full aspect-square object-cover rounded-xl border-2 border-white"
         />
         <button

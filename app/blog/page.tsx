@@ -41,18 +41,17 @@ interface SanityPost {
  */
 const BLOG_ABSTRACT = (
   <>
-    Visit{" "}
+    The most recent blog posts are displayed on this page. Click &quot;Read more
+    &rarr;&quot; on each post to view the complete content on{" "}
     <a
       href="https://airesatbrown.substack.com" // Link to the Substack page for the blog.
       target="_blank" // Open in a new tab since it's an external link.
       rel="noopener noreferrer" // Security/privacy protections for external links.
       className="font-medium text-[#1CB2DF] underline underline-offset-2 hover:no-underline"
     >
-      this link
+      Substack
     </a>{" "}
-    to read the blog posts, which are hosted on Substack. The latest posts are
-    also expressed on this page. Click the &quot;Read more&quot; link on each
-    post to read the full content on Substack.
+    .
   </>
 );
 
@@ -96,9 +95,7 @@ export default async function BlogPage({
     <main className="flex min-h-screen flex-col bg-white">
       {/* Blog header. */}
       <section className="page-container pt-10 pb-8 text-center">
-        <h1 className="page-title">
-          Blog
-        </h1>
+        <h1 className="page-title">Blog</h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-neutral-500">
           {BLOG_ABSTRACT}
         </p>
