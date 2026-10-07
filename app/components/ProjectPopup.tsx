@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { TypedObject } from "@portabletext/types";
 import { useEffect, useId, useRef } from "react";
@@ -12,10 +13,12 @@ const portableComponents: PortableTextComponents = {
       const v = value as { asset?: unknown; alt?: string } | null;
       if (!v?.asset) return null;
       return (
-        <img
+        <Image
           className="my-3 max-h-64 w-auto max-w-full rounded-lg border border-[#08B2E3]/30 object-contain"
           src={urlFor(v).width(800).url()}
           alt={typeof v.alt === "string" ? v.alt : "Inline image"}
+          width={800}
+          height={800}
         />
       );
     },

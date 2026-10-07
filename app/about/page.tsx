@@ -44,7 +44,7 @@ export default function AboutPage() {
       {/* ── HERO ── */}
       <section className="relative flex flex-col items-center justify-center pt-24 pb-20 overflow-hidden">
         {/* Background blob */}
-        
+
         <div
           aria-hidden
           className="absolute -bottom-20 -right-20 w-100 h-100 rounded-full opacity-10 blur-2xl pointer-events-none"
@@ -63,7 +63,7 @@ export default function AboutPage() {
             About AIRES
           </h1>
           <p className="text-base font-normal text-black text-center w-full mb-12">
-              At the AI Robotics Ethics Society, we focus on educating tomorrow's AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
+              At the AI Robotics Ethics Society, we focus on educating tomorrow&apos;s AI leaders in ethical AI principles to ensure AI is created ethically and responsibly.
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function AboutPage() {
         <div className="page-container text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
           <p className="text-lg md:text-xl leading-relaxed opacity-90">
-            AIRES at Brown aims to educate tomorrow's leaders on the uses, advancements, and dangers of artificial intelligence to ensure AI is created ethically and responsibly. AIRES at Brown achieves its mission through student-led research, as well as hosting guest speakers, socials, and other events.
+            AIRES at Brown aims to educate tomorrow&apos;s leaders on the uses, advancements, and dangers of artificial intelligence to ensure AI is created ethically and responsibly. AIRES at Brown achieves its mission through student-led research, as well as hosting guest speakers, socials, and other events.
 
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed">
               AIRES at Brown is a collegiate chapter of the national AIRES organization.
               We were founded in Spring 2019 to bring AI ethics discussion to Brown
-              University's campus. As a newer chapter, we are actively looking for new
+              University&apos;s campus. As a newer chapter, we are actively looking for new
               members to join us!
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function AboutPage() {
               Our main goal is to help students currently at Brown consider AI ethics before
               they move into industry and make important decisions in the field. No matter
               what area of study a Brown student pursues, AI will undoubtedly impact all
-              facets of society in the near future—and it's important that students learn
+              facets of society in the near future—and it&apos;s important that students learn
               the possible implications of modern AI systems.
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
           <p className="text-white/90 text-center max-w-3xl mx-auto mb-12">
           AIRES at Brown achieves its mission through student-led research, guest speakers, debates, and events that explore the ethical future of AI.
           </p>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {activities.map((a) => (
               <div

@@ -175,7 +175,7 @@ export default async function Home() {
           <div className= "bg-[#dbf0fd] py-20">
               <div className="page-container flex flex-col md:flex-row items-center gap-20 mt-10">
                 <div className="flex justify-center rounded-lg border-4 border-white">
-                  <img src="/aires_clubfair.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} />
+                  <Image src="/aires_clubfair.png" alt="AI Team Picture" className="object-cover" style={{ width: 697, height: 518 }} width={697} height={518} />
                 </div>
                 <div className="md:w-1/2 gap-6.25 text-black">
                   <h2 className="text-3xl font-semibold mb-4">Leaders driven by a Mission</h2>
